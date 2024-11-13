@@ -1,28 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Image, StyleSheet, Text, Dimensions } from 'react-native';
 import AppNavigator from './src/navigation/AppNavigator';
+
+// Get screen dimensions
+const { width, height } = Dimensions.get('window');
 
 function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
+  const [imageError, setImageError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate a brief loading screen and check authentication
-    setTimeout(async () => {
-      try {
-        await AsyncStorage.getItem('userToken');
-      } catch (error) {
-        console.error('Error checking authentication:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    }, 1000);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   }, []);
 
   if (isLoading) {
     return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#007AFF" />
+      <View style={styles.splashContainer}>
+        <Image
+          source={require('./src/assets/images/splash/splash.png')}
+          style={styles.splashImage}
+          resizeMode="contain"
+          onError={(error) => {
+            console.log('Image loading error:', error.nativeEvent.error);
+            setImageError(error.nativeEvent.error);
+          }}
+          onLoad={() => console.log('Image loaded successfully')}
+        />
+        {imageError && (
+          <Text style={styles.errorText}>
+            Error loading image: {imageError}
+          </Text>
+        )}
       </View>
     );
   }
@@ -31,11 +41,22 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  loadingContainer: {
+  splashContainer: {
     flex: 1,
+    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    width: width,
+    height: height,
+  },
+  splashImage: {
+    width: width * 0.8,  // 80% of screen width
+    height: height * 0.8, // 80% of screen height
+    resizeMode: 'contain',
+  },
+  errorText: {
+    color: 'red',
+    marginTop: 10,
   },
 });
 
