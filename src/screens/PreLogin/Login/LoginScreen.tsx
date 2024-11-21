@@ -116,16 +116,36 @@ const LoginScreen = ({ navigation }: any) => {
         autoCorrect={false}
       />
       <View style={styles.checkboxContainer}>
-        <CheckBox
-          value={rememberMe}
-          onValueChange={setRememberMe}
-          tintColors={{ true: '#007AFF', false: '#999' }}
-        />
-        <Text style={styles.checkboxLabel}>Remember me</Text>
+        <View style={styles.rememberMeContainer}>
+          <CheckBox
+            value={rememberMe}
+            onValueChange={setRememberMe}
+            tintColors={{ true: '#007AFF', false: '#999' }}
+          />
+          <Text style={styles.checkboxLabel}>Remember me</Text>
+        </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ForgotPassword')}
+        >
+          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <View style={styles.signupContainer}>
+        <Text style={styles.signupText}>Don't have an account? </Text>
+        <TouchableOpacity onPress={() => {
+          console.log('Navigating to SignUp screen');
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'SignUp' }],
+          });
+        }}>
+          <Text style={styles.signupLink}>Sign up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

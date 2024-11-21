@@ -5,14 +5,12 @@ const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
     backgroundColor: '#fff',
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 40,
-    marginTop: -100,
+    marginTop: 40,
+    marginBottom: 20,
   },
   logo: {
     width: width * 0.6,
@@ -31,9 +29,31 @@ export const styles = StyleSheet.create({
     borderColor: '#ddd',
     borderRadius: 8,
     paddingHorizontal: 15,
+    marginHorizontal: 20,
     marginBottom: 15,
     fontSize: 16,
     color: '#000',
+  },
+  inputError: {
+    borderColor: '#ff0000',
+  },
+  errorText: {
+    color: '#ff0000',
+    fontSize: 12,
+    marginHorizontal: 20,
+    marginTop: -10,
+    marginBottom: 10,
+  },
+  termsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 20,
+  },
+  termsText: {
+    marginLeft: 8,
+    fontSize: 14,
+    color: '#333',
   },
   button: {
     backgroundColor: '#007AFF',
@@ -41,44 +61,20 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 20,
+    marginBottom: 15,
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  checkboxContainer: {
-    flexDirection: 'row',
+  loginLink: {
     alignItems: 'center',
-    marginBottom: 20,
-    justifyContent: 'space-between',
+    marginBottom: 30,
   },
-  rememberMeContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  checkboxLabel: {
-    marginLeft: 8,
-    fontSize: 16,
-    color: '#333',
-  },
-  forgotPasswordText: {
+  loginLinkText: {
     color: '#007AFF',
     fontSize: 16,
-  },
-  signupContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 15,
-  },
-  signupText: {
-    fontSize: 16,
-    color: '#333',
-  },
-  signupLink: {
-    fontSize: 16,
-    color: '#007AFF',
-    fontWeight: 'bold',
   },
 });

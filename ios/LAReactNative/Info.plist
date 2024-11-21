@@ -56,11 +56,17 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>LAReactNative would like to find and connect to devices on your local network.</string>
+	<string>Your app requires access to the local network to connect to services.</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_metro._tcp</string>
 		<string>_http._tcp</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ionicons.ttf</string>
+		<string>MaterialIcons.ttf</string>
+		<string>FontAwesome.ttf</string>
 	</array>
 </dict>
 </plist>

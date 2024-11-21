@@ -7,7 +7,6 @@ const { width, height } = Dimensions.get('window');
 
 function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
-  const [imageError, setImageError] = useState<string | null>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,21 +17,9 @@ function App(): React.JSX.Element {
   if (isLoading) {
     return (
       <View style={styles.splashContainer}>
-        <Image
-          source={require('./src/assets/images/splash/splash.png')}
-          style={styles.splashImage}
-          resizeMode="contain"
-          onError={(error) => {
-            console.log('Image loading error:', error.nativeEvent.error);
-            setImageError(error.nativeEvent.error);
-          }}
-          onLoad={() => console.log('Image loaded successfully')}
-        />
-        {imageError && (
-          <Text style={styles.errorText}>
-            Error loading image: {imageError}
-          </Text>
-        )}
+        <View style={styles.placeholderImage}>
+          <Text style={styles.placeholderText}>Loading...</Text>
+        </View>
       </View>
     );
   }
@@ -49,14 +36,17 @@ const styles = StyleSheet.create({
     width: width,
     height: height,
   },
-  splashImage: {
-    width: width * 0.8,  // 80% of screen width
-    height: height * 0.8, // 80% of screen height
-    resizeMode: 'contain',
+  placeholderImage: {
+    width: width * 0.8,
+    height: height * 0.8,
+    backgroundColor: '#f0f0f0',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
   },
-  errorText: {
-    color: 'red',
-    marginTop: 10,
+  placeholderText: {
+    fontSize: 24,
+    color: '#333',
   },
 });
 
