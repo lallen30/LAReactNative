@@ -1,5 +1,5 @@
 {
-  "name": "LAReactNative",
+  "name": "lareactnative",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -11,13 +11,19 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.0.0",
+    "@react-native-community/checkbox": "^0.5.17",
+    "@react-navigation/bottom-tabs": "^7.0.0",
+    "@react-navigation/drawer": "^7.0.0",
     "@react-navigation/native": "^7.0.0",
     "@react-navigation/native-stack": "^7.0.0",
     "axios": "^1.7.7",
     "react": "18.3.1",
     "react-native": "^0.76.1",
+    "react-native-gesture-handler": "^2.14.0",
     "react-native-safe-area-context": "^4.14.0",
-    "react-native-screens": "^4.0.0"
+    "react-native-screens": "^4.0.0",
+    "react-native-vector-icons": "^10.0.2",
+    "react-native-reanimated": "^3.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -25,12 +31,13 @@
     "@babel/runtime": "^7.25.0",
     "@react-native-community/cli": "15.0.0",
     "@react-native-community/cli-platform-android": "15.0.0",
-    "@react-native-community/cli-platform-ios": "15.0.0",
+    "@react-native-community/cli-platform-ios": "^15.1.2",
     "@react-native/babel-preset": "0.76.1",
     "@react-native/eslint-config": "0.76.1",
     "@react-native/metro-config": "0.76.1",
     "@react-native/typescript-config": "0.76.1",
     "@types/react": "^18.2.6",
+    "@types/react-native-vector-icons": "^6.4.18",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
@@ -41,5 +48,10 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "description": "This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
