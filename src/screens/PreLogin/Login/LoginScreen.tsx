@@ -6,16 +6,26 @@ import {
   TouchableOpacity,
   Alert,
   Image,
-  Dimensions,
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './Styles';
+import authService from '../../../helper/authService';
+import { AuthError, LoginResponse } from '../../../helper/types';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const { width } = Dimensions.get('window');
+type RootStackParamList = {
+  Login: undefined;
+  Welcome: undefined;
+};
 
-const LoginScreen = ({ navigation }: any) => {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+
+interface Props {
+  navigation: LoginScreenNavigationProp;
+}
+
+const LoginScreen: React.FC<Props> = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -40,47 +50,25 @@ const LoginScreen = ({ navigation }: any) => {
 
   const handleLogin = async () => {
     try {
-      console.log('Attempting login with:', { email, password });
+      console.log('Attempting login with:', { email });
 
-      const response = await axios({
-        method: 'post',
-        url: 'https://wordpress.betaplanets.com/wp-json/jwt-auth/v1/token',
-        data: {
-          email: email,
-          password: password
-        },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      console.log('API Response:', response.data);
-
-      if (response.data.loginInfo?.token) {
-        console.log('Login successful, saving token and user data');
-        await AsyncStorage.setItem('userToken', response.data.loginInfo.token);
-        await AsyncStorage.setItem('userData', JSON.stringify(response.data.loginInfo));
+      const response = await authService.login(email, password);
+      
+      // Now TypeScript knows response is of type LoginResponse
+      if (response.loginInfo?.token) {
         await AsyncStorage.setItem('rememberMe', rememberMe.toString());
-        console.log('Navigating to Welcome screen');
+        console.log('Login successful, navigating to Welcome screen');
         navigation.replace('Welcome');
       } else {
         console.log('No token in response');
         Alert.alert('Error', 'Invalid response from server');
       }
-    } catch (error: any) {
-      console.error('Login error:', error);
-      if (error.response) {
-        console.error('Error response:', error.response.data);
-        console.error('Error status:', error.response.status);
-        console.error('Error headers:', error.response.headers);
-      } else if (error.request) {
-        console.error('Error request:', error.request);
-      } else {
-        console.error('Error message:', error.message);
-      }
+    } catch (error) {
+      const authError = error as AuthError;
+      console.error('Login error:', authError);
       Alert.alert(
         'Error',
-        error.response?.data?.message?.replace(/<[^>]*>/g, '') || 'An error occurred during login. Please try again.'
+        authError.response?.data?.message?.replace(/<[^>]*>/g, '') || 'An error occurred during login. Please try again.'
       );
     }
   };
