@@ -7,14 +7,12 @@ export const styles = StyleSheet.create({
   },
   header: {
     padding: 20,
-    backgroundColor: '#f8f9fa',
-    alignItems: 'center',
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 5,
+    color: '#333',
   },
   subtitle: {
     fontSize: 16,
@@ -25,20 +23,28 @@ export const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
     marginBottom: 15,
-    color: '#000',
+    color: '#333',
   },
   eventCard: {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f8f8f8',
     padding: 15,
-    borderRadius: 8,
+    borderRadius: 10,
     marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   eventTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: '500',
+    color: '#333',
   },
   eventTime: {
     fontSize: 14,
@@ -60,5 +66,11 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  noEvents: {
+    textAlign: 'center',
+    color: '#666',
+    marginTop: 20,
+    fontSize: 16,
   },
 }); 

@@ -1,0 +1,35 @@
+.modal {
+  --background: var(--ion-color-light);
+}
+
+.group {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2px 8px 2px 8px;
+  margin-bottom: 20px;
+}
+
+.indicator-container {
+  padding-right: 0.4rem;
+  padding-left: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.event-indicator {
+  background-color: var(--ion-color-success);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.ion-add-button {
+  --color: var(--ion-color-light);
+}
+
+.ion-cancel-button {
+  --color: var(--ion-light);
+  font-weight: 500;
+}

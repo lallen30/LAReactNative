@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" text="" (click)="this.navService.goBack()">
+        <ion-icon class="header-btn" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> {{eventTitle}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p class="event-date">{{eventDate}}</p>
+  <div class="event-time">
+    <p class="event-start"><span *ngIf="endTime">Start: </span>{{startTime}}</p>
+    <p *ngIf="endTime">End: {{endTime}}</p>
+  </div>
+  <div class="spacer"></div>
+  <div [innerHTML]="eventContent"></div>
+  <div class="spacer"></div>
+  <p *ngIf="eventStreetAddress">{{eventStreetAddress}}</p>
+  <p *ngIf="eventAptSuite">{{eventAptSuite}}</p>
+  <p><span *ngIf="eventCity">{{eventCity}}, </span> <span *ngIf="eventState">{{eventState}} </span> <span
+      *ngIf="eventZip">{{eventZip}}</span></p>
+  <p *ngIf="eventPrice">Event Price: ${{eventPrice}}</p>
+</ion-content>

@@ -11,7 +11,7 @@ interface APIEndpoints {
   CHANGE_PASSWORD: string;
   GET_ABOUTUS: string;
   DELETE_USER: string;
-  // Add other endpoints here
+  GET_EVENTS: string;
 }
 
 interface APIConfig {
@@ -33,6 +33,7 @@ export const API: APIConfig = {
     UPDATE_PROFILE: 'wp-json/mobileapi/v1/updateProfile',
     CHANGE_PASSWORD: 'updatePassword',
     GET_ABOUTUS: 'get_aboutus',
-    DELETE_USER: 'delete_user'
+    DELETE_USER: 'delete_user',
+    GET_EVENTS: 'wp-json/mobileapi/v1/getEvents'
   }
 };

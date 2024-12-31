@@ -7,6 +7,7 @@ import authService from '../helper/authService';
 import TabNavigator from './TabNavigator';
 import AboutUsScreen from '../screens/PostLogin/AboutUs/AboutUsScreen';
 import CalendarScreen from '../screens/PostLogin/Calendar/CalendarScreen';
+import EventDetails from '../screens/PostLogin/Calendar/EventDetails';
 import MyProfileScreen from '../screens/PostLogin/MyProfile/MyProfileScreen';
 import EditProfileScreen from '../screens/PostLogin/EditProfile/EditProfileScreen';
 import ChangePasswordScreen from '../screens/PostLogin/ChangePassword/ChangePasswordScreen';
@@ -45,6 +46,12 @@ const HomeWrapper = ({ navigation }: any) => (
 const CalendarWrapper = ({ navigation }: any) => (
   <ScreenWrapper navigation={navigation}>
     <CalendarScreen />
+  </ScreenWrapper>
+);
+
+const EventDetailsWrapper = ({ navigation }: any) => (
+  <ScreenWrapper navigation={navigation}>
+    <EventDetails />
   </ScreenWrapper>
 );
 
@@ -90,25 +97,32 @@ const DrawerNavigator = ({ navigation }: any) => {
       <Drawer.Navigator
         screenOptions={{
           headerShown: true,
+          headerStyle: {
+            backgroundColor: '#fff',
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 1,
+            borderBottomColor: '#e9ecef',
+          },
+          headerTintColor: '#2c3e50',
+          headerTitleStyle: {
+            fontWeight: '600',
+          },
           drawerStyle: {
             backgroundColor: '#fff',
             width: 280,
           },
-          drawerLabelStyle: {
-            marginLeft: -10,
-            fontSize: 16,
-          },
-          drawerItemStyle: {
-            paddingLeft: 8,
-          },
+          drawerActiveBackgroundColor: '#50cebb',
+          drawerActiveTintColor: '#fff',
+          drawerInactiveTintColor: '#2c3e50',
         }}
       >
         <Drawer.Screen
           name="Home"
           component={HomeWrapper}
           options={{
-            drawerIcon: ({ focused, size }) => (
-              <Icon name={focused ? 'home' : 'home-outline'} size={size} color={focused ? '#007AFF' : '#666'} />
+            drawerIcon: ({ color }) => (
+              <Icon name="home-outline" size={24} color={color} />
             ),
           }}
         />
@@ -143,20 +157,31 @@ const DrawerNavigator = ({ navigation }: any) => {
           }}
         />
         <Drawer.Screen
+          name="EventDetails"
+          component={EventDetailsWrapper}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Icon name="calendar-outline" size={24} color={color} />
+            ),
+            drawerLabel: () => null,
+            drawerItemStyle: { display: 'none' },
+            headerLeft: () => (
+              <Icon
+                name="chevron-back"
+                size={28}
+                color="#50cebb"
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.navigate('Calendar')}
+              />
+            ),
+          }}
+        />
+        <Drawer.Screen
           name="About Us"
           component={AboutUsWrapper}
           options={{
             drawerIcon: ({ focused, size }) => (
               <Icon name={focused ? 'information-circle' : 'information-circle-outline'} size={size} color={focused ? '#007AFF' : '#666'} />
-            ),
-          }}
-        />
-        <Drawer.Screen
-          name="Profile"
-          component={ProfileWrapper}
-          options={{
-            drawerIcon: ({ focused, size }) => (
-              <Icon name={focused ? 'person' : 'person-outline'} size={size} color={focused ? '#007AFF' : '#666'} />
             ),
           }}
         />
