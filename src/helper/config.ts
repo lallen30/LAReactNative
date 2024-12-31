@@ -5,6 +5,12 @@ interface AppConstType {
 
 interface APIEndpoints {
   LOGIN: string;
+  MOBILEAPI: string;
+  GET_PROFILE: string;
+  UPDATE_PROFILE: string;
+  CHANGE_PASSWORD: string;
+  GET_ABOUTUS: string;
+  DELETE_USER: string;
   // Add other endpoints here
 }
 
@@ -19,9 +25,14 @@ export const AppConst: AppConstType = {
 };
 
 export const API: APIConfig = {
-  BASE_URL: 'https://wordpress.betaplanets.com/wp-json/',
+  BASE_URL: 'https://wordpress.betaplanets.com/',
   ENDPOINTS: {
-    LOGIN: 'jwt-auth/v1/token',
-    // Add other endpoints here as needed
+    LOGIN: 'wp-json/jwt-auth/v1/token',
+    MOBILEAPI: 'wp-json/mobileapi/v1',
+    GET_PROFILE: 'wp-json/mobileapi/v1/getProfile',
+    UPDATE_PROFILE: 'wp-json/mobileapi/v1/updateProfile',
+    CHANGE_PASSWORD: 'updatePassword',
+    GET_ABOUTUS: 'get_aboutus',
+    DELETE_USER: 'delete_user'
   }
 };

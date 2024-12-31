@@ -7,13 +7,17 @@ export const styles = StyleSheet.create({
   },
   header: {
     padding: 20,
-    backgroundColor: '#f8f9fa',
-    alignItems: 'center',
+    paddingTop: 40,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000',
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginBottom: 20,
   },
   formContainer: {
     padding: 20,
@@ -22,29 +26,47 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   label: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 5,
+    fontSize: 16,
+    marginBottom: 8,
+    color: '#333',
   },
-  input: {
-    height: 50,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
+    backgroundColor: '#f8f8f8',
+  },
+  inputIcon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    height: 48,
     fontSize: 16,
-    color: '#000',
+    color: '#333',
   },
-  saveButton: {
+  errorText: {
+    color: '#ff3b30',
+    fontSize: 14,
+    marginTop: 5,
+  },
+  button: {
     backgroundColor: '#007AFF',
-    margin: 20,
-    padding: 15,
     borderRadius: 8,
+    height: 48,
+    justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 20,
   },
-  saveButtonText: {
+  disabledButton: {
+    opacity: 0.7,
+  },
+  buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-}); 
+});

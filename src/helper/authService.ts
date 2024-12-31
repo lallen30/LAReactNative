@@ -6,21 +6,37 @@ import { LoginResponse, AuthError } from './types';
 class AuthService {
   async login(email: string, password: string): Promise<LoginResponse> {
     try {
+      console.log('Attempting login with:', { email });
+
+      // Match the Angular implementation's data format
+      const data = {
+        email: email.trim(),
+        password: password
+      };
+
+      console.log('Making request to:', API.ENDPOINTS.LOGIN, 'with data:', data);
+
       const response = await axiosRequest.post<any, LoginResponse>(
         API.ENDPOINTS.LOGIN,
+        data,
         {
-          email,
-          password,
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
         }
       );
 
+      console.log('Login response:', response);
+
       if (response.loginInfo?.token) {
         await AsyncStorage.setItem('userToken', response.loginInfo.token);
-        await AsyncStorage.setItem('userData', JSON.stringify(response.loginInfo));
+        await AsyncStorage.setItem('userData', JSON.stringify(response));
       }
 
       return response;
     } catch (error) {
+      console.error('Login error:', error);
       throw error as AuthError;
     }
   }

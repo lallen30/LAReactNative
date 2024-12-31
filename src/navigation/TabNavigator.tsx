@@ -1,35 +1,17 @@
 import React from 'react';
+import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-vector-icons/Ionicons';
-import MyProfileScreen from '../screens/PostLogin/MyProfile/MyProfileScreen';
-import EditProfileScreen from '../screens/PostLogin/MyProfile/EditProfileScreen';
-import BluestoneAppsAIScreen from '../screens/PostLogin/BluestoneAppsAI/BluestoneAppsAIScreen';
-import CustomerSupportScreen from '../screens/PostLogin/CustomerSupport/CustomerSupportScreen';
-import CalendarScreen from '../screens/PostLogin/Calendar/CalendarScreen';
-import DrawerNavigator from './DrawerNavigator';
-import { DrawerActions } from '@react-navigation/native';
+import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
-const ProfileStack = createNativeStackNavigator();
 
-const ProfileStackNavigator = () => {
-  return (
-    <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
-      <ProfileStack.Screen name="ProfileMain" component={MyProfileScreen} />
-      <ProfileStack.Screen name="EditProfile" component={EditProfileScreen} />
-    </ProfileStack.Navigator>
-  );
-};
+const TabNavigator = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
 
-interface TabNavigatorProps {
-  initialRoute?: string;
-}
-
-const TabNavigator = ({ initialRoute }: TabNavigatorProps) => {
   return (
     <Tab.Navigator
-      initialRouteName={initialRoute}
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
@@ -39,78 +21,104 @@ const TabNavigator = ({ initialRoute }: TabNavigatorProps) => {
           borderTopColor: '#e0e0e0',
           height: 60,
         },
+        tabBarActiveTintColor: '#007AFF',
+        tabBarInactiveTintColor: '#666',
       }}
     >
       <Tab.Screen
         name="ProfileTab"
-        component={ProfileStackNavigator}
+        component={View}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('MyProfile');
+          },
+        }}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Icon
               name={focused ? 'person' : 'person-outline'}
               size={24}
-              color={focused ? '#007AFF' : '#666'}
+              color={route.name === 'MyProfile' ? '#007AFF' : '#666'}
             />
           ),
         }}
       />
       <Tab.Screen
         name="AITab"
-        component={BluestoneAppsAIScreen}
+        component={View}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('BluestoneAI');
+          },
+        }}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Icon
               name={focused ? 'bulb' : 'bulb-outline'}
               size={24}
-              color={focused ? '#007AFF' : '#666'}
+              color={route.name === 'BluestoneAI' ? '#007AFF' : '#666'}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="SupportTab"
-        component={CustomerSupportScreen}
+        name="HomeTab"
+        component={View}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('Home');
+          },
+        }}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Icon
-              name={focused ? 'headset' : 'headset-outline'}
+              name={focused ? 'home' : 'home-outline'}
               size={24}
-              color={focused ? '#007AFF' : '#666'}
+              color={route.name === 'Home' ? '#007AFF' : '#666'}
             />
           ),
         }}
       />
       <Tab.Screen
         name="CalendarTab"
-        component={CalendarScreen}
+        component={View}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.navigate('Calendar');
+          },
+        }}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Icon
               name={focused ? 'calendar' : 'calendar-outline'}
               size={24}
-              color={focused ? '#007AFF' : '#666'}
+              color={route.name === 'Calendar' ? '#007AFF' : '#666'}
             />
           ),
         }}
       />
       <Tab.Screen
         name="Menu"
-        component={DrawerNavigator}
+        component={View}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: ({ focused, color }) => (
             <Icon
               name={focused ? 'menu' : 'menu-outline'}
               size={24}
-              color={focused ? '#007AFF' : '#666'}
+              color={color}
             />
           ),
         }}
-        listeners={({ navigation }) => ({
+        listeners={{
           tabPress: (e) => {
             e.preventDefault();
             navigation.dispatch(DrawerActions.toggleDrawer());
           },
-        })}
+        }}
       />
     </Tab.Navigator>
   );

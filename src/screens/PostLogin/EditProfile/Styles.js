@@ -10,24 +10,28 @@ export const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#f8f9fa',
   },
-  profileImageContainer: {
-    alignItems: 'center',
-  },
-  profileImage: {
+  avatarContainer: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    marginBottom: 10,
+    overflow: 'hidden',
+    backgroundColor: '#e1e1e1',
+    position: 'relative',
   },
-  changePhotoButton: {
+  profileImage: {
+    width: '100%',
+    height: '100%',
+  },
+  cameraIconContainer: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
     backgroundColor: '#007AFF',
-    paddingHorizontal: 15,
-    paddingVertical: 8,
-    borderRadius: 15,
-  },
-  changePhotoText: {
-    color: '#fff',
-    fontSize: 14,
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   formContainer: {
     padding: 20,
@@ -38,27 +42,47 @@ export const styles = StyleSheet.create({
   label: {
     fontSize: 14,
     color: '#666',
-    marginBottom: 5,
+    marginBottom: 8,
   },
-  input: {
-    height: 50,
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
+    backgroundColor: '#fff',
+  },
+  inputIcon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    height: 48,
     fontSize: 16,
     color: '#000',
   },
-  saveButton: {
+  errorText: {
+    color: '#ff3b30',
+    fontSize: 12,
+    marginTop: 4,
+  },
+  buttonContainer: {
+    padding: 20,
+    paddingBottom: 40,
+  },
+  button: {
     backgroundColor: '#007AFF',
-    margin: 20,
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
   },
-  saveButtonText: {
+  disabledButton: {
+    opacity: 0.7,
+  },
+  buttonText: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '600',
   },
-}); 
+});

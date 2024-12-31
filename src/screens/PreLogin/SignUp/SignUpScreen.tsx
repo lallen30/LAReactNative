@@ -11,6 +11,7 @@ import {
 import CheckBox from '@react-native-community/checkbox';
 import axios from 'axios';
 import { styles } from './Styles';
+import { API } from '../../../helper/config';
 
 const SignUpScreen = ({ navigation }: any) => {
   console.log('SignUpScreen rendered');
@@ -68,7 +69,7 @@ const SignUpScreen = ({ navigation }: any) => {
 
     try {
       const response = await axios.post(
-        'https://wordpress.betaplanets.com/wp-json/mobileapi/v1/verifyemail_and_send_otp',
+        `${API.BASE_URL}${API.ENDPOINTS.MOBILEAPI}/verifyemail_and_send_otp`,
         {
           ...formData,
           emailVerification: 'pending',

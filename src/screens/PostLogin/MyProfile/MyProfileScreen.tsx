@@ -1,50 +1,128 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { View, Text, Image, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { styles } from './Styles';
 
-const MyProfileScreen = ({ navigation }: any) => {
-  const dummyUserData = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    phone: '+1 234 567 8900',
-    role: 'Developer',
-    joinDate: 'January 2023',
+interface UserProfile {
+  loginInfo: {
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string;
+    user_avatar?: string;
+    display_name: string;
+    city_state?: string;
   };
+}
+
+const MyProfileScreen = ({ navigation }: any) => {
+  const [userInfo, setUserInfo] = useState<UserProfile | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const loadUserData = async () => {
+    try {
+      setIsLoading(true);
+      const userDataString = await AsyncStorage.getItem('userData');
+      if (userDataString) {
+        const userData = JSON.parse(userDataString);
+        console.log('Loaded user data:', userData);
+        setUserInfo(userData);
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      loadUserData();
+    }, [])
+  );
+
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.centerContent]}>
+        <ActivityIndicator size="large" color="#007AFF" />
+      </View>
+    );
+  }
+
+  if (!userInfo?.loginInfo) {
+    return (
+      <View style={[styles.container, styles.centerContent]}>
+        <Text style={styles.errorText}>No user data available</Text>
+      </View>
+    );
+  }
+
+  const { loginInfo } = userInfo;
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Image
-          source={require('../../../assets/images/profile-pic.svg')}
-          style={styles.profileImage}
-        />
-        <Text style={styles.name}>{dummyUserData.name}</Text>
-        <Text style={styles.role}>{dummyUserData.role}</Text>
+        <View style={styles.avatarContainer}>
+          {loginInfo.user_avatar ? (
+            <Image source={{ uri: loginInfo.user_avatar }} style={styles.profileImage} />
+          ) : (
+            <Image 
+              source={require('../../../assets/images/default_profile_pic.png')} 
+              style={styles.profileImage}
+            />
+          )}
+        </View>
+        <Text style={styles.name}>{loginInfo.display_name}</Text>
+        {loginInfo.city_state && (
+          <Text style={styles.location}>{loginInfo.city_state}</Text>
+        )}
       </View>
 
       <View style={styles.infoSection}>
         <View style={styles.infoItem}>
-          <Text style={styles.label}>Email</Text>
-          <Text style={styles.value}>{dummyUserData.email}</Text>
+          <Icon name="person-outline" size={24} color="#666" style={styles.icon} />
+          <View>
+            <Text style={styles.label}>Full Name</Text>
+            <Text style={styles.value}>
+              {`${loginInfo.first_name} ${loginInfo.last_name}`}
+            </Text>
+          </View>
         </View>
 
         <View style={styles.infoItem}>
-          <Text style={styles.label}>Phone</Text>
-          <Text style={styles.value}>{dummyUserData.phone}</Text>
+          <Icon name="call-outline" size={24} color="#666" style={styles.icon} />
+          <View>
+            <Text style={styles.label}>Mobile Number</Text>
+            <Text style={styles.value}>{loginInfo.phone || 'Not provided'}</Text>
+          </View>
         </View>
 
         <View style={styles.infoItem}>
-          <Text style={styles.label}>Member Since</Text>
-          <Text style={styles.value}>{dummyUserData.joinDate}</Text>
+          <Icon name="mail-outline" size={24} color="#666" style={styles.icon} />
+          <View>
+            <Text style={styles.label}>Email</Text>
+            <Text style={styles.value}>{loginInfo.email}</Text>
+          </View>
         </View>
       </View>
 
-      <TouchableOpacity
-        style={styles.editButton}
-        onPress={() => navigation.navigate('EditProfile')}
-      >
-        <Text style={styles.editButtonText}>Edit Profile</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('EditProfile')}
+        >
+          <Text style={styles.buttonText}>Edit Account</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.button, styles.secondaryButton]}
+          onPress={() => navigation.navigate('ChangePassword')}
+        >
+          <Text style={[styles.buttonText, styles.secondaryButtonText]}>Change Password</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };

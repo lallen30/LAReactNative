@@ -11,6 +11,7 @@ import {
 import axios from 'axios';
 import { styles } from './Styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API } from '../../../helper/config';
 
 const VerifyEmailScreen = ({ route, navigation }: any) => {
   const { registerData, otp } = route.params;
@@ -42,7 +43,7 @@ const VerifyEmailScreen = ({ route, navigation }: any) => {
 
     try {
       const response = await axios.post(
-        'https://wordpress.betaplanets.com/wp-json/mobileapi/v1/register',
+        `${API.BASE_URL}${API.ENDPOINTS.MOBILEAPI}/v1/register`,
         {
           ...registerData,
           user_otp: otpValue,

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { styles } from './Styles';
 import authService from '../../../helper/authService';
 import { AuthError, LoginResponse } from '../../../helper/types';
@@ -29,6 +30,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     checkPreviousLogin();
@@ -50,17 +52,29 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      console.log('Attempting login with:', { email });
+      const trimmedEmail = email.trim();
+      if (!trimmedEmail || !password) {
+        Alert.alert('Error', 'Please enter both email and password');
+        return;
+      }
 
-      const response = await authService.login(email, password);
+      // Basic email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(trimmedEmail)) {
+        Alert.alert('Error', 'Please enter a valid email address');
+        return;
+      }
+
+      console.log('Attempting login with:', { email: trimmedEmail });
+
+      const response = await authService.login(trimmedEmail, password);
       
-      // Now TypeScript knows response is of type LoginResponse
       if (response.loginInfo?.token) {
         await AsyncStorage.setItem('rememberMe', rememberMe.toString());
         console.log('Login successful, navigating to Welcome screen');
         navigation.replace('Welcome');
       } else {
-        console.log('No token in response');
+        console.log('No token in response:', response);
         Alert.alert('Error', 'Invalid response from server');
       }
     } catch (error) {
@@ -68,7 +82,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       console.error('Login error:', authError);
       Alert.alert(
         'Error',
-        authError.response?.data?.message?.replace(/<[^>]*>/g, '') || 'An error occurred during login. Please try again.'
+        authError.response?.data?.message?.replace(/<[^>]*>/g, '') || 
+        authError.response?.data?.errormsg || 
+        'An error occurred during login. Please try again.'
       );
     }
   };
@@ -88,21 +104,34 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
         placeholder="Email"
         placeholderTextColor="#999"
         value={email}
-        onChangeText={setEmail}
+        onChangeText={(text) => setEmail(text.toLowerCase().trim())}
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
+        spellCheck={false}
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        placeholderTextColor="#999"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#999"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={!showPassword}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <TouchableOpacity
+          style={styles.eyeIcon}
+          onPress={() => setShowPassword(!showPassword)}
+        >
+          <Icon
+            name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+            size={24}
+            color="#666"
+          />
+        </TouchableOpacity>
+      </View>
       <View style={styles.checkboxContainer}>
         <CheckBox
           value={rememberMe}
