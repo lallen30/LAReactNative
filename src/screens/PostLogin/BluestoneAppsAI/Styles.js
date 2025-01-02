@@ -6,41 +6,77 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    padding: 20,
-    backgroundColor: '#f8f9fa',
-    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#f5f5f5',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000',
+    color: '#333',
   },
   content: {
-    padding: 20,
+    flex: 1,
+    padding: 16,
   },
-  description: {
+  messageContainer: {
+    marginBottom: 16,
+    padding: 16,
+    backgroundColor: '#f9f9f9',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#eee',
+  },
+  inputContainer: {
+    marginTop: 16,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 12,
+    minHeight: 100,
+    textAlignVertical: 'top',
+  },
+  submitButton: {
+    backgroundColor: '#007AFF',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  submitButtonText: {
+    color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  loadingText: {
     color: '#666',
-    marginBottom: 20,
+    fontSize: 16,
     textAlign: 'center',
+    padding: 16,
   },
-  featuresContainer: {
-    gap: 15,
+  // HTML content styles
+  htmlContent: {
+    color: '#333',
+    fontSize: 16,
+    lineHeight: 24,
   },
-  featureCard: {
-    backgroundColor: '#f8f9fa',
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 15,
+  paragraph: {
+    marginVertical: 8,
+    color: '#333',
+    fontSize: 16,
+    lineHeight: 24,
   },
-  featureTitle: {
-    fontSize: 18,
+  heading1: {
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#000',
-    marginBottom: 5,
+    color: '#333',
+    marginVertical: 12,
   },
-  featureDescription: {
-    fontSize: 14,
-    color: '#666',
+  heading2: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginVertical: 10,
   },
-}); 
+});

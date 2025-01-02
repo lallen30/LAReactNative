@@ -13,6 +13,7 @@ import EditProfileScreen from '../screens/PostLogin/EditProfile/EditProfileScree
 import ChangePasswordScreen from '../screens/PostLogin/ChangePassword/ChangePasswordScreen';
 import BluestoneAppsAIScreen from '../screens/PostLogin/BluestoneAppsAI/BluestoneAppsAIScreen';
 import HomeScreen from '../screens/PostLogin/Home/HomeScreen';
+import ContactScreen from '../screens/PostLogin/Contact/ContactScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -79,6 +80,10 @@ const AIWrapper = ({ navigation }: any) => (
   </ScreenWrapper>
 );
 
+function ContactWrapper({ navigation }: any) {
+  return <ScreenWrapper navigation={navigation}><ContactScreen /></ScreenWrapper>;
+}
+
 const DrawerNavigator = ({ navigation }: any) => {
   const handleLogout = async () => {
     try {
@@ -104,17 +109,18 @@ const DrawerNavigator = ({ navigation }: any) => {
             borderBottomWidth: 1,
             borderBottomColor: '#e9ecef',
           },
-          headerTintColor: '#2c3e50',
+          headerTintColor: '#007AFF',
           headerTitleStyle: {
             fontWeight: '600',
+            color: '#2c3e50',
           },
           drawerStyle: {
             backgroundColor: '#fff',
             width: 280,
           },
-          drawerActiveBackgroundColor: '#50cebb',
+          drawerActiveBackgroundColor: '#007AFF',
           drawerActiveTintColor: '#fff',
-          drawerInactiveTintColor: '#2c3e50',
+          drawerInactiveTintColor: '#666',
         }}
       >
         <Drawer.Screen
@@ -169,7 +175,7 @@ const DrawerNavigator = ({ navigation }: any) => {
               <Icon
                 name="chevron-back"
                 size={28}
-                color="#50cebb"
+                color="#007AFF"
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Calendar')}
               />
@@ -199,6 +205,17 @@ const DrawerNavigator = ({ navigation }: any) => {
           options={{
             drawerItemStyle: { display: 'none' },
             headerTitle: 'Change Password'
+          }}
+        />
+        <Drawer.Screen
+          name="Contact"
+          component={ContactWrapper}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Icon name="mail-outline" size={24} color={color} />
+            ),
+            drawerLabel: 'Contact Us',
+            headerTitle: 'Contact Us',
           }}
         />
         <Drawer.Screen

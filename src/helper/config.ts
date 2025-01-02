@@ -12,6 +12,11 @@ interface APIEndpoints {
   GET_ABOUTUS: string;
   DELETE_USER: string;
   GET_EVENTS: string;
+  GET_AI_API_URL: string;
+  GET_AI_WELCOME: string;
+  SAVE_AI_QNA: string;
+  ASK_BLUESTONEAI: string;
+  GET_AI_CREDENTIALS: string;
 }
 
 interface APIConfig {
@@ -34,6 +39,11 @@ export const API: APIConfig = {
     CHANGE_PASSWORD: 'updatePassword',
     GET_ABOUTUS: 'get_aboutus',
     DELETE_USER: 'delete_user',
-    GET_EVENTS: 'wp-json/mobileapi/v1/getEvents'
+    GET_EVENTS: 'wp-json/mobileapi/v1/getEvents',
+    GET_AI_API_URL: 'get_ai_api_url',
+    GET_AI_WELCOME: 'get_ai_welcome',
+    SAVE_AI_QNA: 'save_ai_qna',
+    ASK_BLUESTONEAI: 'ask_bluestoneai',
+    GET_AI_CREDENTIALS: 'get_ai_credentials'
   }
 };

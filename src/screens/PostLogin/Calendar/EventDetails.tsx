@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import RenderHtml from 'react-native-render-html';
 
 const EventDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const event = route.params?.event;
+  const { width } = useWindowDimensions();
 
   const formatTime = (timeStr: string) => {
     const [hours, minutes] = timeStr.split(':');
@@ -56,7 +58,11 @@ const EventDetails = () => {
         {event.event_content && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Description</Text>
-            <Text style={styles.description}>{event.event_content}</Text>
+            <RenderHtml
+              contentWidth={width - 40}
+              source={{ html: event.event_content }}
+              baseStyle={styles.description}
+            />
           </View>
         )}
 
@@ -88,16 +94,19 @@ const styles = StyleSheet.create({
   },
   date: {
     fontSize: 18,
-    color: '#50cebb',
+    color: '#007AFF',
     marginBottom: 5,
   },
   time: {
     fontSize: 18,
-    color: '#50cebb',
+    color: '#007AFF',
     marginBottom: 20,
   },
   section: {
     marginBottom: 25,
+    borderTopWidth: 1,
+    borderTopColor: '#e9ecef',
+    paddingTop: 20,
   },
   sectionTitle: {
     fontSize: 18,
@@ -107,18 +116,19 @@ const styles = StyleSheet.create({
   },
   location: {
     fontSize: 16,
-    color: '#6c757d',
+    color: '#666',
     lineHeight: 24,
   },
   description: {
     fontSize: 16,
-    color: '#6c757d',
+    color: '#666',
     lineHeight: 24,
   },
   price: {
     fontSize: 18,
-    color: '#50cebb',
+    color: '#007AFF',
     fontWeight: '500',
+    marginTop: 5,
   },
 });
 

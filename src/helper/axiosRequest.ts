@@ -13,8 +13,17 @@ const axiosRequest = axios.create({
     if (data instanceof FormData) {
       return data;
     }
+
+    // Check if the request should use JSON
+    const useJson = headers['Content-Type'] === 'application/json';
+    
+    // For JSON requests, return stringified data
+    if (useJson && data && typeof data === 'object') {
+      return JSON.stringify(data);
+    }
+    
     // For regular objects, transform to form-urlencoded
-    if (data && typeof data === 'object' && !(data instanceof FormData)) {
+    if (data && typeof data === 'object') {
       headers['Content-Type'] = 'application/x-www-form-urlencoded';
       return Object.entries(data)
         .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
@@ -27,7 +36,8 @@ const axiosRequest = axios.create({
 // Request interceptor
 axiosRequest.interceptors.request.use(
   async (config) => {
-    console.log('Making request to:', config.url, 'with data:', config.data);
+    console.log('Making request to:', config.url);
+    console.log('Request data:', config.data);
     console.log('Request headers:', config.headers);
     console.log('Request method:', config.method);
     return config;

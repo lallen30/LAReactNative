@@ -67,7 +67,7 @@ const CalendarScreen = ({ navigation }: any) => {
           const eventDate = event.event_date;
           marked[eventDate] = {
             marked: true,
-            dotColor: '#50cebb'
+            dotColor: '#007AFF'
           };
         });
         
@@ -205,12 +205,20 @@ const CalendarScreen = ({ navigation }: any) => {
     <View style={styles.container}>
       <Calendar
         style={styles.calendar}
-        markedDates={markedDates}
         onDayPress={onDayPress}
+        markedDates={markedDates}
         theme={{
-          selectedDayBackgroundColor: '#50cebb',
-          todayTextColor: '#50cebb',
-          arrowColor: '#50cebb',
+          selectedDayBackgroundColor: '#007AFF',
+          selectedDayTextColor: '#ffffff',
+          todayTextColor: '#007AFF',
+          dotColor: '#007AFF',
+          arrowColor: '#666',
+          monthTextColor: '#2c3e50',
+          textDayFontWeight: '300',
+          textMonthFontWeight: 'bold',
+          textDayHeaderFontWeight: '500',
+          textDayColor: '#2c3e50',
+          textDayHeaderColor: '#2c3e50'
         }}
       />
       <View style={[styles.sectionHeader, { padding: 20, marginVertical: 15 }]}>

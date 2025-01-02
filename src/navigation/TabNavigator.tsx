@@ -2,12 +2,21 @@ import React from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { DrawerActions, useNavigation, useRoute } from '@react-navigation/native';
+import { DrawerActions, useNavigation, useRoute, NavigationProp, ParamListBase } from '@react-navigation/native';
 
-const Tab = createBottomTabNavigator();
+type TabParamList = {
+  Home: undefined;
+  AITab: undefined;
+  BluestoneAI: undefined;
+  ProfileTab: undefined;
+  CalendarTab: undefined;
+  Menu: undefined;
+};
+
+const Tab = createBottomTabNavigator<TabParamList>();
 
 const TabNavigator = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<TabParamList>>();
   const route = useRoute();
 
   return (
@@ -18,8 +27,7 @@ const TabNavigator = () => {
         tabBarStyle: {
           backgroundColor: '#fff',
           borderTopWidth: 1,
-          borderTopColor: '#e0e0e0',
-          height: 60,
+          borderTopColor: '#e9ecef',
         },
         tabBarActiveTintColor: '#007AFF',
         tabBarInactiveTintColor: '#666',

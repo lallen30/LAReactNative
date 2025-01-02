@@ -5,39 +5,38 @@ const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
     backgroundColor: '#fff',
+    padding: 20,
+    justifyContent: 'center',
   },
   logoContainer: {
     alignItems: 'center',
     marginBottom: 40,
-    marginTop: -100, // Adjust this value to position the logo as needed
   },
   logo: {
-    width: width * 0.6, // 60% of screen width
-    height: 100, // Adjust height as needed
+    width: width * 0.6,
+    height: 100,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 20,
+    color: '#2c3e50',
+    marginBottom: 30,
     textAlign: 'center',
-    color: '#000',
   },
   input: {
-    width: '100%',
     height: 50,
-    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#e9ecef',
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    color: '#2c3e50',
+    backgroundColor: '#fff',
+    textColor: '#2c3e50',
   },
   passwordContainer: {
-    width: '100%',
     position: 'relative',
     marginBottom: 15,
   },
@@ -45,19 +44,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     right: 15,
     top: 13,
-    zIndex: 1,
-  },
-  button: {
-    backgroundColor: '#007AFF',
-    height: 50,
-    borderRadius: 8,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
   },
   checkboxContainer: {
     flexDirection: 'row',
@@ -65,22 +51,32 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   customCheckbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 1,
-    borderColor: '#999',
+    width: 24,
+    height: 24,
     borderRadius: 4,
-    marginRight: 8,
+    borderWidth: 2,
+    borderColor: '#50cebb',
+    marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   customCheckboxChecked: {
-    backgroundColor: '#007AFF',
-    borderColor: '#007AFF',
+    backgroundColor: '#50cebb',
   },
   checkboxLabel: {
-    marginLeft: 8,
     fontSize: 16,
-    color: '#333',
+    color: '#2c3e50',
+  },
+  button: {
+    backgroundColor: '#50cebb',
+    height: 50,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
   },
 });

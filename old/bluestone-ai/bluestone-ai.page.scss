@@ -1,0 +1,36 @@
+ion-content {
+  position: relative;
+  /* Needed for absolute positioning context */
+}
+
+.form {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+}
+
+#openai-gpt-form {
+  display: flex;
+  max-width: 90%;
+  justify-content: space-around;
+  margin-left: -2%;
+}
+
+.openai-gpt-response {
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.line-break {
+  margin: 5px 0;
+}
+
+.openai-gpt-response>div>div {
+  padding-left: 10px;
+}
+
+#loading {
+  font-weight: bold;
+}

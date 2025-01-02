@@ -48,6 +48,21 @@ export const styles = StyleSheet.create({
     color: '#666',
     lineHeight: 24,
   },
+  webViewContainer: {
+    flex: 1,
+    width: '100%',
+  },
+  webView: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#ffffff',
+  },
+  noContent: {
+    fontSize: 16,
+    color: '#666',
+    textAlign: 'center',
+    padding: 20,
+  },
   websiteButton: {
     backgroundColor: '#007AFF',
     paddingHorizontal: 30,

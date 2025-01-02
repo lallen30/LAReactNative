@@ -7,7 +7,6 @@ import {
   Alert,
   Image,
 } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { styles } from './Styles';
@@ -102,7 +101,7 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Email"
-        placeholderTextColor="#999"
+        placeholderTextColor="#2c3e50"
         value={email}
         onChangeText={(text) => setEmail(text.toLowerCase().trim())}
         keyboardType="email-address"
@@ -112,9 +111,9 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       />
       <View style={styles.passwordContainer}>
         <TextInput
-          style={styles.input}
+          style={[styles.input, { marginBottom: 0, color: '#2c3e50' }]}
           placeholder="Password"
-          placeholderTextColor="#999"
+          placeholderTextColor="#2c3e50"
           value={password}
           onChangeText={setPassword}
           secureTextEntry={!showPassword}
@@ -128,16 +127,19 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
           <Icon
             name={showPassword ? 'eye-off-outline' : 'eye-outline'}
             size={24}
-            color="#666"
+            color="#2c3e50"
           />
         </TouchableOpacity>
       </View>
       <View style={styles.checkboxContainer}>
-        <CheckBox
-          value={rememberMe}
-          onValueChange={setRememberMe}
-          tintColors={{ true: '#007AFF', false: '#999' }}
-        />
+        <TouchableOpacity
+          style={[styles.customCheckbox, rememberMe && styles.customCheckboxChecked]}
+          onPress={() => setRememberMe(!rememberMe)}
+        >
+          {rememberMe && (
+            <Icon name="checkmark" size={16} color="#fff" />
+          )}
+        </TouchableOpacity>
         <Text style={styles.checkboxLabel}>Remember me</Text>
       </View>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>

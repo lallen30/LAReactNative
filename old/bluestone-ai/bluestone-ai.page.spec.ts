@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CalPage } from './cal.page';
+import { BluestoneAiPage } from './bluestone-ai.page';
 
-describe('CalPage', () => {
-  let component: CalPage;
-  let fixture: ComponentFixture<CalPage>;
+describe('BluestoneAiPage', () => {
+  let component: BluestoneAiPage;
+  let fixture: ComponentFixture<BluestoneAiPage>;
 
   beforeEach(async(() => {
-    fixture = TestBed.createComponent(CalPage);
+    fixture = TestBed.createComponent(BluestoneAiPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
