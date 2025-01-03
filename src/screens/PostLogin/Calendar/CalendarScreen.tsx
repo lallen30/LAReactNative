@@ -51,7 +51,11 @@ const CalendarScreen = ({ navigation }: any) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        params: { token }
+        params: { 
+          token,
+          month: new Date(selectedDate).getMonth() + 1, // Adding 1 because getMonth() returns 0-11
+          year: new Date(selectedDate).getFullYear()
+        }
       });
       
       console.log('Events API Response:', response);

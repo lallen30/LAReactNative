@@ -110,7 +110,7 @@ add_action('rest_api_init', function () {
 
     register_rest_route('mobileapi/v1', '/contact_us', array(
         'methods' => 'POST',
-        'callback' => 'contactus',
+        'callback' => 'contact_us',
     ));
 
     register_rest_route('mobileapi/v1', '/updateUserInfo', array(
@@ -3880,122 +3880,151 @@ function createpicture($request)
 }
 
 
-function contactus($request)
-{
+function create_contact_messages_table() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'bluestoneapp_contact_messages';
+    
+    // Check if table exists and if phone column exists
+    $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name;
+    $phone_column_exists = false;
+    
+    if ($table_exists) {
+        $columns = $wpdb->get_results("SHOW COLUMNS FROM $table_name");
+        foreach ($columns as $column) {
+            if ($column->Field === 'phone') {
+                $phone_column_exists = true;
+                break;
+            }
+        }
+    }
+    
+    // If table doesn't exist or phone column is missing, (re)create the table
+    if (!$table_exists || !$phone_column_exists) {
+        // Drop the table if it exists
+        $wpdb->query("DROP TABLE IF EXISTS $table_name");
+        
+        $charset_collate = $wpdb->get_charset_collate();
+        
+        $sql = "CREATE TABLE $table_name (
+            id bigint(20) NOT NULL AUTO_INCREMENT,
+            name varchar(100) NOT NULL,
+            email varchar(100) NOT NULL,
+            phone varchar(20) DEFAULT NULL,
+            subject varchar(200) NOT NULL,
+            message text NOT NULL,
+            date_submitted datetime NOT NULL,
+            status varchar(20) NOT NULL DEFAULT 'unread',
+            PRIMARY KEY (id)
+        ) $charset_collate;";
+        
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+        
+        // Verify table was created and has phone column
+        $table_exists = $wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name;
+        if ($table_exists) {
+            $columns = $wpdb->get_results("SHOW COLUMNS FROM $table_name");
+            foreach ($columns as $column) {
+                if ($column->Field === 'phone') {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    return true;
+}
 
+function contact_us($request) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'bluestoneapp_contact_messages';
+
+    // Ensure table exists with correct structure
+    if (!create_contact_messages_table()) {
+        return new WP_Error(
+            'table_creation_failed',
+            __('Could not create contact messages table', 'bluestoneapp-contact-us'),
+            array('status' => 500)
+        );
+    }
+
+    // Get parameters from request
+    $params = $request->get_params();
+    
+    // Validate required fields
+    $required_fields = ['name', 'email', 'subject', 'message'];
+    foreach ($required_fields as $field) {
+        if (empty($params[$field])) {
+            return new WP_Error(
+                'missing_field',
+                sprintf(__('%s is required', 'bluestoneapp-contact-us'), ucfirst($field)),
+                array('status' => 400)
+            );
+        }
+    }
+
+    // Validate email format
+    if (!is_email($params['email'])) {
+        return new WP_Error(
+            'invalid_email',
+            __('Invalid email address', 'bluestoneapp-contact-us'),
+            array('status' => 400)
+        );
+    }
+
+    // Prepare data for insertion
     $data = array(
-        "status" => "ok",
-        "errormsg" => "",
-        'error_code' => ""
-
+        'name' => sanitize_text_field($params['name']),
+        'email' => sanitize_email($params['email']),
+        'phone' => isset($params['phone']) ? sanitize_text_field($params['phone']) : null,
+        'subject' => sanitize_text_field($params['subject']),
+        'message' => sanitize_textarea_field($params['message']),
+        'date_submitted' => current_time('mysql'),
+        'status' => 'unread'
     );
 
-    $param = $request->get_params();
+    // Insert into database
+    $result = $wpdb->insert($table_name, $data);
 
-    $token = $param['token'];
-
-    $name = $param['name'];
-
-    $email = $param['email'];
-
-    $zp_cashtag = $param['zp_cashtag'];
-
-    $phone = $param['phone'];
-
-    $message_contents = $param['message'];
-
-    $user_id = GetMobileAPIUserByIdToken($token);
-
-    if ($user_id) {
-
-        $message = '  </table>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding:50px 0;">
-          <table width="600" style="background: #fff; border-collapse: collapse;">
-            <tr>
-              <td>
-                <p style="font-family: "Poppins", sans-serif; font-size: 32px; font-weight: 700; color: #000; text-align: center; margin-bottom: 0; ">Hello !</p>
-              </td>
-            </tr>
-             <tr>
-              <td>
-                <img src="https://styletemplate.betaplanets.com/wp-content/uploads/2021/06/gray-border.png" alt="" style="display: block; margin: 10px auto;">
-              </td>
-            </tr>
-             <tr>
-              <td style="padding:20px;">
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">Name  : <strong> ' . $name . ' </strong></p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">Email : <strong> ' . $email . '</strong></p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">Zp CashTag : <strong> ' . $zp_cashtag . '</strong></p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">Phone : <strong> ' . $phone . ' </strong></p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">Message : <strong> ' . $message_contents . ' </strong></p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 30px 0; line-height: 24px; ">If you have any questions please contact us at support@Zoompay.com</p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 10px 0; line-height: 24px; ">Thanks,</p>
-                <p style="font-family: "Poppins", sans-serif; font-size: 16px; font-weight: 300; color: #000; text-align: left; margin: 0 0 10px 0; line-height: 24px; ">Zoompay Team</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table width="100" style="background: #000; border-collapse: collapse;text-align:center;color:#fff;">
-            <tr>
-              <td style="padding-top: 50px;">
-                <a href="#"><img src="https://styletemplate.betaplanets.com/wp-content/uploads/2021/06/apple.jpg" alt=""></a>
-              </td>
-              <td style="padding-top: 50px;">
-                <a href="#"><img src="https://styletemplate.betaplanets.com/wp-content/uploads/2021/06/play.jpg" alt=""></a>                
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <img src="<img src="https://styletemplate.betaplanets.com/wp-content/uploads/2021/06/deco-line.png" alt="" style="display: block; margin: 10px auto;">
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2" style="font-family: "Poppins", sans-serif; font-size: 14px; text-align: center; color: #fff; line-height: 24px;">
-                <p style="font-family: "Poppins", sans-serif; font-size: 14px; text-align: center; color: #fff; line-height: 24px;">Copyright © 2021 Zoompay. All rights reserved. <br> You are receiving this mail bacause you opted in via our website.</p>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>';
-        $from_email = 'no-reply@knoxweb.com';
-        //php mailer variables
-
-        // $to = get_option('admin_email');
-        $to = 'larry@bluestoneapps.com';
-
-        $subject = "Conact Us";
-        $headers = array(
-            'Content-Type: text/html; charset=UTF-8'
+    if ($result === false) {
+        $last_error = $wpdb->last_error;
+        return new WP_Error(
+            'db_error',
+            __('Failed to save contact message: ' . $last_error, 'bluestoneapp-contact-us'),
+            array('status' => 500)
         );
-        $headers .= 'From: ' . $from_email . "\r\n" .
-            'Reply-To: ' . $from_email . "\r\n";
-        //Here put your Validation and send mail
-
-        $mail = wp_mail($to, $subject, $message, $headers);
-        if ($mail) {
-            $data['msg'] = "Email sent successfully";
-            $data['status_code'] = 200;
-            return new WP_REST_Response($data, 200);
-        } else {
-            $data['status_code'] = 201;
-            $data['msg'] = "Error to send email";
-            return new WP_REST_Response($data, 401);
-        }
-    } else {
-        $data['userid'] = $user_id;
-        $data['status'] = "error";
-        $data['errormsg'] = __('Invalid request.');
-        $data['error_code'] = "";
-        return new WP_REST_Response($data, 403);
     }
+
+    // Send email notification if enabled
+    $options = get_option('bluestoneapp_contact_options');
+    if ($options && isset($options['enable_notifications']) && $options['enable_notifications']) {
+        $to = isset($options['notification_email']) ? $options['notification_email'] : get_option('admin_email');
+        $email_subject = isset($options['email_subject']) ? $options['email_subject'] : 'New Contact Form Submission: {subject}';
+        $email_template = isset($options['email_template']) ? $options['email_template'] : 
+            'Name: {name}<br/>Email: {email}<br/>Phone: {phone}<br/>Subject: {subject}<br/>Message: {message}';
+        
+        $subject = str_replace(
+            array('{name}', '{email}', '{phone}', '{subject}'),
+            array($data['name'], $data['email'], $data['phone'], $data['subject']),
+            $email_subject
+        );
+        $message = str_replace(
+            array('{name}', '{email}', '{phone}', '{subject}', '{message}'),
+            array($data['name'], $data['email'], $data['phone'], $data['subject'], $data['message']),
+            $email_template
+        );
+        $headers = array('Content-Type: text/html; charset=UTF-8');
+        wp_mail($to, $subject, $message, $headers);
+    }
+
+    return array(
+        'success' => true,
+        'message' => __('Contact message sent successfully', 'bluestoneapp-contact-us'),
+        'id' => $wpdb->insert_id
+    );
 }
+
 
 function create_profile($request)
 {

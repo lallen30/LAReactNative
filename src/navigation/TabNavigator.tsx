@@ -6,8 +6,7 @@ import { DrawerActions, useNavigation, useRoute, NavigationProp, ParamListBase }
 
 type TabParamList = {
   Home: undefined;
-  AITab: undefined;
-  BluestoneAI: undefined;
+  ContactTab: undefined;
   ProfileTab: undefined;
   CalendarTab: undefined;
   Menu: undefined;
@@ -53,20 +52,20 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="AITab"
+        name="ContactTab"
         component={View}
         listeners={{
           tabPress: (e) => {
             e.preventDefault();
-            navigation.navigate('BluestoneAI');
+            navigation.navigate('Contact');
           },
         }}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon
-              name={focused ? 'bulb' : 'bulb-outline'}
+              name={focused ? 'mail' : 'mail-outline'}
               size={24}
-              color={route.name === 'BluestoneAI' ? '#007AFF' : '#666'}
+              color={route.name === 'Contact' ? '#007AFF' : '#666'}
             />
           ),
         }}
@@ -112,6 +111,12 @@ const TabNavigator = () => {
       <Tab.Screen
         name="Menu"
         component={View}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault();
+            navigation.dispatch(DrawerActions.openDrawer());
+          },
+        }}
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon
@@ -120,12 +125,6 @@ const TabNavigator = () => {
               color={color}
             />
           ),
-        }}
-        listeners={{
-          tabPress: (e) => {
-            e.preventDefault();
-            navigation.dispatch(DrawerActions.toggleDrawer());
-          },
         }}
       />
     </Tab.Navigator>

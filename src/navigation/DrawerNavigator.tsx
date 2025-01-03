@@ -142,7 +142,8 @@ const DrawerNavigator = ({ navigation }: any) => {
             drawerLabel: 'My Profile',
           }}
         />
-        <Drawer.Screen
+        {/* Temporarily hidden Bluestone AI screen */}
+        {/* <Drawer.Screen
           name="BluestoneAI"
           component={AIWrapper}
           options={{
@@ -151,7 +152,7 @@ const DrawerNavigator = ({ navigation }: any) => {
             ),
             drawerLabel: 'Bluestone AI',
           }}
-        />
+        /> */}
         <Drawer.Screen
           name="Calendar"
           component={CalendarWrapper}
