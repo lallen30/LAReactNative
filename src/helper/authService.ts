@@ -17,13 +17,7 @@ class AuthService {
 
       const response = await axiosRequest.post<LoginResponse>(
         API.ENDPOINTS.LOGIN,
-        data,
-        {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }
+        data
       );
 
       console.log('Login response:', response);

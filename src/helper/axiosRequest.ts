@@ -4,7 +4,7 @@ import { API } from './config';
 
 const axiosRequest = axios.create({
   baseURL: API.BASE_URL,
-  timeout: 10000,
+  timeout: 30000,
   headers: {
     'Accept': 'application/json'
   },
@@ -12,14 +12,6 @@ const axiosRequest = axios.create({
     // Don't transform FormData
     if (data instanceof FormData) {
       return data;
-    }
-
-    // Check if the request should use JSON
-    const useJson = headers['Content-Type'] === 'application/json';
-    
-    // For JSON requests, return stringified data
-    if (useJson && data && typeof data === 'object') {
-      return JSON.stringify(data);
     }
     
     // For regular objects, transform to form-urlencoded

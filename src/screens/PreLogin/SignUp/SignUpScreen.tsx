@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import axios from 'axios';
-import { styles } from './Styles';
+import { styles } from './Styles.ts';
 import { API } from '../../../helper/config';
 
 const SignUpScreen = ({ navigation }: any) => {
@@ -95,87 +95,88 @@ const SignUpScreen = ({ navigation }: any) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require('../../../assets/images/logo.png')}
-          style={styles.logo}
-          resizeMode="contain"
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.logoContainer}>
+          <Image
+            source={require('../../../assets/images/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+
+        <Text style={styles.title}>Sign Up</Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#2c3e50"
+          value={formData.email}
+          onChangeText={(text) => setFormData({ ...formData, email: text.toLowerCase() })}
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
-      </View>
+        {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
 
-      <Text style={styles.title}>Sign Up</Text>
-
-      <TextInput
-        style={[styles.input, errors.email && styles.inputError]}
-        placeholder="Email"
-        placeholderTextColor="#999"
-        value={formData.email}
-        onChangeText={(text) => setFormData({ ...formData, email: text })}
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
-      {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-
-      <TextInput
-        style={[styles.input, errors.first_name && styles.inputError]}
-        placeholder="First Name"
-        placeholderTextColor="#999"
-        value={formData.first_name}
-        onChangeText={(text) => setFormData({ ...formData, first_name: text })}
-      />
-      {errors.first_name && <Text style={styles.errorText}>{errors.first_name}</Text>}
-
-      <TextInput
-        style={[styles.input, errors.last_name && styles.inputError]}
-        placeholder="Last Name"
-        placeholderTextColor="#999"
-        value={formData.last_name}
-        onChangeText={(text) => setFormData({ ...formData, last_name: text })}
-      />
-      {errors.last_name && <Text style={styles.errorText}>{errors.last_name}</Text>}
-
-      <TextInput
-        style={[styles.input, errors.password && styles.inputError]}
-        placeholder="Password"
-        placeholderTextColor="#999"
-        value={formData.password}
-        onChangeText={(text) => setFormData({ ...formData, password: text })}
-        secureTextEntry
-      />
-      {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
-
-      <TextInput
-        style={[styles.input, errors.confirmPassword && styles.inputError]}
-        placeholder="Confirm Password"
-        placeholderTextColor="#999"
-        value={formData.confirmPassword}
-        onChangeText={(text) => setFormData({ ...formData, confirmPassword: text })}
-        secureTextEntry
-      />
-      {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
-
-      <View style={styles.termsContainer}>
-        <CheckBox
-          value={acceptTerms}
-          onValueChange={setAcceptTerms}
-          tintColors={{ true: '#007AFF', false: '#999' }}
+        <TextInput
+          style={styles.input}
+          placeholder="First Name"
+          placeholderTextColor="#2c3e50"
+          value={formData.first_name}
+          onChangeText={(text) => setFormData({ ...formData, first_name: text })}
         />
-        <Text style={styles.termsText}>I accept the Terms and Conditions</Text>
-      </View>
-      {errors.terms && <Text style={styles.errorText}>{errors.terms}</Text>}
+        {errors.first_name && <Text style={styles.errorText}>{errors.first_name}</Text>}
 
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          placeholder="Last Name"
+          placeholderTextColor="#2c3e50"
+          value={formData.last_name}
+          onChangeText={(text) => setFormData({ ...formData, last_name: text })}
+        />
+        {errors.last_name && <Text style={styles.errorText}>{errors.last_name}</Text>}
 
-      <TouchableOpacity
-        style={styles.loginLink}
-        onPress={() => navigation.navigate('Login')}
-      >
-        <Text style={styles.loginLinkText}>Already have an account? Login</Text>
-      </TouchableOpacity>
-    </ScrollView>
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#2c3e50"
+          value={formData.password}
+          onChangeText={(text) => setFormData({ ...formData, password: text })}
+          secureTextEntry
+        />
+        {errors.password && <Text style={styles.errorText}>{errors.password}</Text>}
+
+        <TextInput
+          style={styles.input}
+          placeholder="Confirm Password"
+          placeholderTextColor="#2c3e50"
+          value={formData.confirmPassword}
+          onChangeText={(text) => setFormData({ ...formData, confirmPassword: text })}
+          secureTextEntry
+        />
+        {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
+
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={acceptTerms}
+            onValueChange={setAcceptTerms}
+            tintColors={{ true: '#007AFF', false: '#2c3e50' }}
+          />
+          <Text style={styles.checkboxLabel}>I accept the Terms and Conditions</Text>
+        </View>
+        {errors.terms && <Text style={styles.errorText}>{errors.terms}</Text>}
+
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
+
+        <View style={styles.linkContainer}>
+          <Text style={styles.linkText}>Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.link}>Login</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

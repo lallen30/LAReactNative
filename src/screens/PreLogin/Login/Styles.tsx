@@ -34,7 +34,6 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: '#2c3e50',
     backgroundColor: '#fff',
-    textColor: '#2c3e50',
   },
   passwordContainer: {
     position: 'relative',
@@ -55,20 +54,20 @@ export const styles = StyleSheet.create({
     height: 24,
     borderRadius: 4,
     borderWidth: 2,
-    borderColor: '#50cebb',
+    borderColor: '#007AFF',
     marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   customCheckboxChecked: {
-    backgroundColor: '#50cebb',
+    backgroundColor: '#007AFF',
   },
   checkboxLabel: {
     fontSize: 16,
     color: '#2c3e50',
   },
   button: {
-    backgroundColor: '#50cebb',
+    backgroundColor: '#007AFF',
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
@@ -78,5 +77,14 @@ export const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     fontWeight: '600',
+  },
+  linkContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+  },
+  link: {
+    color: '#007AFF',
+    fontSize: 16,
   },
 });

@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
   },
   eventTime: {
     fontSize: 14,
-    color: '#50cebb',
+    color: '#007AFF',
     marginBottom: 8,
     fontWeight: '500',
   },

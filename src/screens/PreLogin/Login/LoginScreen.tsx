@@ -17,6 +17,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 type RootStackParamList = {
   Login: undefined;
   Welcome: undefined;
+  ForgotPassword: undefined;
+  SignUp: undefined;
 };
 
 type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
@@ -145,6 +147,14 @@ const LoginScreen: React.FC<Props> = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+      <View style={styles.linkContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+          <Text style={styles.link}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <Text style={styles.link}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
