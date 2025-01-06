@@ -1,11 +1,12 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background.primary,
     padding: 20,
   },
   scrollContainer: {
@@ -24,23 +25,23 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#2c3e50',
+    color: colors.text.primary,
     marginBottom: 30,
     textAlign: 'center',
   },
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: '#e9ecef',
+    borderColor: colors.border.primary,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    backgroundColor: '#fff',
-    color: '#2c3e50',
+    backgroundColor: colors.background.primary,
+    color: colors.text.primary,
   },
   errorText: {
-    color: '#dc3545',
+    color: colors.text.error,
     fontSize: 14,
     marginTop: -10,
     marginBottom: 10,
@@ -54,10 +55,10 @@ export const styles = StyleSheet.create({
   checkboxLabel: {
     marginLeft: 10,
     flex: 1,
-    color: '#2c3e50',
+    color: colors.text.primary,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
@@ -65,7 +66,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text.white,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -75,11 +76,11 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   linkText: {
-    color: '#2c3e50',
+    color: colors.text.primary,
     fontSize: 16,
   },
   link: {
-    color: '#007AFF',
+    color: colors.primary,
     fontSize: 16,
     marginLeft: 5,
   },

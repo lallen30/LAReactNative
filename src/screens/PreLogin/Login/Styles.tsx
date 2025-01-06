@@ -1,11 +1,12 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background.primary,
     padding: 20,
     justifyContent: 'center',
   },
@@ -20,20 +21,20 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#2c3e50',
+    color: colors.text.primary,
     marginBottom: 30,
     textAlign: 'center',
   },
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: '#e9ecef',
+    borderColor: colors.border.primary,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    color: '#2c3e50',
-    backgroundColor: '#fff',
+    color: colors.text.primary,
+    backgroundColor: colors.background.primary,
   },
   passwordContainer: {
     position: 'relative',
@@ -54,27 +55,27 @@ export const styles = StyleSheet.create({
     height: 24,
     borderRadius: 4,
     borderWidth: 2,
-    borderColor: '#007AFF',
+    borderColor: colors.primary,
     marginRight: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   customCheckboxChecked: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
   },
   checkboxLabel: {
     fontSize: 16,
-    color: '#2c3e50',
+    color: colors.text.primary,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text.white,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -84,7 +85,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   link: {
-    color: '#007AFF',
+    color: colors.primary,
     fontSize: 16,
   },
 });

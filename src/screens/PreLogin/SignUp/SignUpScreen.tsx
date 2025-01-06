@@ -12,6 +12,7 @@ import CheckBox from '@react-native-community/checkbox';
 import axios from 'axios';
 import { styles } from './Styles.ts';
 import { API } from '../../../helper/config';
+import { colors } from '../../../theme/colors';
 
 const SignUpScreen = ({ navigation }: any) => {
   console.log('SignUpScreen rendered');
@@ -159,7 +160,7 @@ const SignUpScreen = ({ navigation }: any) => {
           <CheckBox
             value={acceptTerms}
             onValueChange={setAcceptTerms}
-            tintColors={{ true: '#007AFF', false: '#2c3e50' }}
+            tintColors={{ true: colors.primary, false: colors.text.primary }}
           />
           <Text style={styles.checkboxLabel}>I accept the Terms and Conditions</Text>
         </View>
