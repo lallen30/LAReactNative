@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerActions, useNavigation, useRoute, NavigationProp, ParamListBase } from '@react-navigation/native';
+import { colors } from '../theme/colors';
 
 type TabParamList = {
   Home: undefined;
@@ -24,12 +25,12 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: colors.background.footer,
           borderTopWidth: 1,
-          borderTopColor: '#e9ecef',
+          borderTopColor: colors.light,
         },
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: '#666',
+        tabBarActiveTintColor: colors.secondary,
+        tabBarInactiveTintColor: colors.text.footer,
       }}
     >
       <Tab.Screen

@@ -129,9 +129,6 @@ const AboutUsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>About Us</Text>
-      </View>
 
       <View style={styles.webViewContainer}>
         {aboutUsContent ? (

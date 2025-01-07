@@ -14,6 +14,7 @@ import ChangePasswordScreen from '../screens/PostLogin/ChangePassword/ChangePass
 import BluestoneAppsAIScreen from '../screens/PostLogin/BluestoneAppsAI/BluestoneAppsAIScreen';
 import HomeScreen from '../screens/PostLogin/Home/HomeScreen';
 import ContactScreen from '../screens/PostLogin/Contact/ContactScreen';
+import { colors } from '../theme/colors';
 
 const Drawer = createDrawerNavigator();
 
@@ -103,24 +104,24 @@ const DrawerNavigator = ({ navigation }: any) => {
         screenOptions={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: '#fff',
+            backgroundColor: colors.background.header,
             elevation: 0,
             shadowOpacity: 0,
             borderBottomWidth: 1,
-            borderBottomColor: '#e9ecef',
+            borderBottomColor: colors.light,
           },
-          headerTintColor: '#007AFF',
+          headerTintColor: colors.text.header,
           headerTitleStyle: {
             fontWeight: '600',
-            color: '#2c3e50',
+            color: colors.text.header,
           },
           drawerStyle: {
-            backgroundColor: '#fff',
+            backgroundColor: colors.White,
             width: 280,
           },
-          drawerActiveBackgroundColor: '#007AFF',
-          drawerActiveTintColor: '#fff',
-          drawerInactiveTintColor: '#666',
+          drawerActiveBackgroundColor: colors.background.header,
+          drawerActiveTintColor: colors.White,
+          drawerInactiveTintColor: colors.dark,
         }}
       >
         <Drawer.Screen

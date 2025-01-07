@@ -1,4 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
@@ -9,14 +10,14 @@ container: {
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colors.background.primary,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
     textAlign: 'center',
-    color: '#000',
+    color: colors.text.primary,
   },
   input: {
     height: 50,
@@ -26,18 +27,17 @@ container: {
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    color: '#000',
+    color: colors.black,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     height: 50,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 15,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text.white,
     fontSize: 16,
     fontWeight: 'bold',
   },
@@ -46,7 +46,7 @@ container: {
     alignItems: 'center',
   },
   backToLoginText: {
-    color: '#007AFF',
+    color: colors.primary,
     fontSize: 16,
   },
 });

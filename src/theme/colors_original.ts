@@ -1,13 +1,16 @@
 export const colors = {
-  primary: '#003F84',
-  secondary: '#1D6FFF',
-  tertiary: '#003F84',
-  Success: '#23AD51',
-  Warning: '#FF8200',
-  Danger: '#E02D47',
+  primary: '#007AFF',
+  secondary: '#50cebb',
+  tertiary: '#F0A225',
+  Success: '#2FD36F',
+  Warning: '#FDC40C',
+  Danger: '#EC445A',
   White: '#FFFFFF',
-  light: '#F5F5F5',
-  dark: '#2c3e50',
+  ultraLight: '#F9F9FC',
+  light: '#EBEBEB',
+  mediumLight: '#BEC6C8',
+  mediumDark: '#707070',
+  dark: '#222428',
   black: '#000000',
   text: {
     primary: '#2c3e50',
@@ -20,7 +23,7 @@ export const colors = {
   background: {
     primary: '#fff',
     secondary: '#f8f9fa',
-    header: '#003F84',
+    header: '#3B00FF',
     footer: '#F9F9FC',
   },
   border: {

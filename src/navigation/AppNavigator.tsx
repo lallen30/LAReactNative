@@ -7,6 +7,8 @@ import ForgotPasswordScreen from '../screens/PreLogin/ForgotPassword/ForgotPassw
 import SignUpScreen from '../screens/PreLogin/SignUp/SignUpScreen';
 import VerifyEmailScreen from '../screens/PreLogin/VerifyEmail/VerifyEmailScreen';
 import DrawerNavigator from './DrawerNavigator';
+import TermsAndConditionsScreen from '../screens/PreLogin/Legal/TermsAndConditionsScreen';
+import PrivacyPolicyScreen from '../screens/PreLogin/Legal/PrivacyPolicyScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +49,20 @@ const AppNavigator = () => {
           component={VerifyEmailScreen}
           options={{
             presentation: 'card'
+          }}
+        />
+        <Stack.Screen
+          name="TermsAndConditions"
+          component={TermsAndConditionsScreen}
+          options={{
+            presentation: 'modal'
+          }}
+        />
+        <Stack.Screen
+          name="PrivacyPolicy"
+          component={PrivacyPolicyScreen}
+          options={{
+            presentation: 'modal'
           }}
         />
       </Stack.Navigator>

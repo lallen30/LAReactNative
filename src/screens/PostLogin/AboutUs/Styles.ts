@@ -1,21 +1,22 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: colors.background.primary,
   },
   header: {
     padding: 16,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
-    backgroundColor: '#fff',
+    backgroundColor: colors.background.header,
     marginBottom: 0
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#000'
+    color: colors.text.header,
   },
   webViewContainer: {
     flex: 1,

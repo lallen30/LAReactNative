@@ -52,9 +52,22 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
+  customCheckbox: {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: colors.primary,
+    marginRight: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  customCheckboxChecked: {
+    backgroundColor: colors.primary,
+  },
   checkboxLabel: {
-    marginLeft: 10,
     flex: 1,
+    marginLeft: 8,
     color: colors.text.primary,
   },
   button: {
@@ -81,6 +94,7 @@ export const styles = StyleSheet.create({
   },
   link: {
     color: colors.primary,
+    textDecorationLine: 'underline',
     fontSize: 16,
     marginLeft: 5,
   },

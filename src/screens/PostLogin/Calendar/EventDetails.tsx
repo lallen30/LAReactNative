@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import RenderHtml from 'react-native-render-html';
+import RenderHtml, { defaultSystemFonts } from 'react-native-render-html';
 
 const EventDetails = () => {
   const navigation = useNavigation();
@@ -30,6 +30,25 @@ const EventDetails = () => {
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  // Define default rendering options
+  const renderersProps = {
+    img: {
+      enableExperimentalPercentWidth: true
+    }
+  };
+
+  const tagsStyles = {
+    body: {
+      color: '#2c3e50',
+      fontSize: 16,
+      lineHeight: 24,
+    },
+    a: {
+      color: '#007AFF',
+      textDecorationLine: 'underline',
+    }
   };
 
   return (
@@ -61,7 +80,13 @@ const EventDetails = () => {
             <RenderHtml
               contentWidth={width - 40}
               source={{ html: event.event_content }}
+              renderersProps={renderersProps}
+              tagsStyles={tagsStyles}
+              systemFonts={defaultSystemFonts}
               baseStyle={styles.description}
+              defaultTextProps={{
+                selectable: true
+              }}
             />
           </View>
         )}

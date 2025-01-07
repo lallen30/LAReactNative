@@ -8,7 +8,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import CheckBox from '@react-native-community/checkbox';
+import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import { styles } from './Styles.ts';
 import { API } from '../../../helper/config';
@@ -157,12 +157,30 @@ const SignUpScreen = ({ navigation }: any) => {
         {errors.confirmPassword && <Text style={styles.errorText}>{errors.confirmPassword}</Text>}
 
         <View style={styles.checkboxContainer}>
-          <CheckBox
-            value={acceptTerms}
-            onValueChange={setAcceptTerms}
-            tintColors={{ true: colors.primary, false: colors.text.primary }}
-          />
-          <Text style={styles.checkboxLabel}>I accept the Terms and Conditions</Text>
+          <TouchableOpacity
+            style={[styles.customCheckbox, acceptTerms && styles.customCheckboxChecked]}
+            onPress={() => setAcceptTerms(!acceptTerms)}
+          >
+            {acceptTerms && (
+              <Icon name="checkmark" size={16} color="#fff" />
+            )}
+          </TouchableOpacity>
+          <Text style={styles.checkboxLabel}>
+            I accept the{' '}
+            <Text 
+              style={[styles.checkboxLabel, styles.link]}
+              onPress={() => navigation.navigate('TermsAndConditions')}
+            >
+              Terms and Conditions
+            </Text>
+            {' '}and{' '}
+            <Text 
+              style={[styles.checkboxLabel, styles.link]}
+              onPress={() => navigation.navigate('PrivacyPolicy')}
+            >
+              Privacy Policy
+            </Text>
+          </Text>
         </View>
         {errors.terms && <Text style={styles.errorText}>{errors.terms}</Text>}
 
