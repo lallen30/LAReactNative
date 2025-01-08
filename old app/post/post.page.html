@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="this.navService.goBack()">
+        <ion-icon class="header-btn" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{post_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12" class="ion-padding">
+        <ion-img *ngIf="featured_image" [src]="featured_image"></ion-img>
+        <h3>{{post_title}}</h3>
+        <h4>{{post_date}}</h4>
+        <div [innerHTML]="post_content"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

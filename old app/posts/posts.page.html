@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="dark" text="" (click)="this.navService.goHome()">
+        <ion-icon class="header-btn" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Posts </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="listing">
+  <ion-list *ngFor="let group of groupedPosts">
+
+    <div class="list_header">
+      <div class="list_header-left">{{ group.category_name }}</div>
+    </div>
+    <ion-item detail="true" (click)="singlePost(post.post_id)" *ngFor="let post of group.posts">
+      <ion-thumbnail slot="start" *ngIf="post.featured_image">
+        <ion-img [src]="post.featured_image"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{post.post_title}}</h2>
+        <p class="date-readmore">{{post.post_date}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

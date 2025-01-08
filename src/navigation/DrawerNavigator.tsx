@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -14,6 +14,8 @@ import ChangePasswordScreen from '../screens/PostLogin/ChangePassword/ChangePass
 import BluestoneAppsAIScreen from '../screens/PostLogin/BluestoneAppsAI/BluestoneAppsAIScreen';
 import HomeScreen from '../screens/PostLogin/Home/HomeScreen';
 import ContactScreen from '../screens/PostLogin/Contact/ContactScreen';
+import PostsScreen from '../screens/PostLogin/Posts/PostsScreen';
+import PostScreen from '../screens/PostLogin/Posts/PostScreen';
 import { colors } from '../theme/colors';
 
 const Drawer = createDrawerNavigator();
@@ -84,6 +86,12 @@ const AIWrapper = ({ navigation }: any) => (
 function ContactWrapper({ navigation }: any) {
   return <ScreenWrapper navigation={navigation}><ContactScreen /></ScreenWrapper>;
 }
+
+const PostWrapper = ({ navigation }: any) => (
+  <ScreenWrapper navigation={navigation}>
+    <PostScreen />
+  </ScreenWrapper>
+);
 
 const DrawerNavigator = ({ navigation }: any) => {
   const handleLogout = async () => {
@@ -177,7 +185,7 @@ const DrawerNavigator = ({ navigation }: any) => {
               <Icon
                 name="chevron-back"
                 size={28}
-                color="#007AFF"
+                color={colors.text.header}
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Calendar')}
               />
@@ -191,6 +199,43 @@ const DrawerNavigator = ({ navigation }: any) => {
             drawerIcon: ({ focused, size }) => (
               <Icon name={focused ? 'information-circle' : 'information-circle-outline'} size={size} color={focused ? '#007AFF' : '#666'} />
             ),
+          }}
+        />
+        <Drawer.Screen
+          name="Posts"
+          component={PostsScreen}
+          options={{
+            drawerIcon: ({ color }) => (
+              <Icon name="newspaper-outline" size={24} color={color} />
+            ),
+            drawerLabel: 'Posts',
+          }}
+        />
+        <Drawer.Screen
+          name="Post"
+          component={PostWrapper}
+          options={{
+            drawerItemStyle: { display: 'none' },
+            headerLeft: () => (
+              <Icon
+                name="chevron-back"
+                size={28}
+                color={colors.text.header}
+                style={{ marginLeft: 15 }}
+                onPress={() => navigation.navigate('Posts')}
+              />
+            ),
+            headerStyle: {
+              backgroundColor: colors.background.header,
+              elevation: 0,
+              shadowOpacity: 0,
+              borderBottomWidth: 1,
+              borderBottomColor: colors.light,
+            },
+            headerTitleStyle: {
+              color: colors.text.header,
+              fontSize: 18,
+            },
           }}
         />
         <Drawer.Screen

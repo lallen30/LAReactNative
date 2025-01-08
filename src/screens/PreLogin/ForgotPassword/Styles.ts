@@ -1,52 +1,66 @@
-import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { colors } from '../../../theme/colors';
+
+const { width } = Dimensions.get('window');
 
 type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
 };
 
 export const styles = StyleSheet.create<Styles>({
-container: {
+  container: {
     flex: 1,
-    justifyContent: 'center',
-    padding: 20,
     backgroundColor: colors.background.primary,
+    padding: 20,
+    justifyContent: 'center',
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logo: {
+    width: width * 0.6,
+    height: 200,
+    resizeMode: 'contain',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
+    color: colors.text.primary,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: colors.text.secondary,
     marginBottom: 30,
     textAlign: 'center',
-    color: colors.text.primary,
   },
   input: {
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#ddd',
+    backgroundColor: colors.background.secondary,
     borderRadius: 8,
-    paddingHorizontal: 15,
+    padding: 15,
     marginBottom: 15,
-    fontSize: 16,
-    color: colors.black,
+    color: colors.text.primary,
   },
   button: {
     backgroundColor: colors.primary,
-    height: 50,
     borderRadius: 8,
-    justifyContent: 'center',
+    padding: 15,
     alignItems: 'center',
+    marginBottom: 15,
   },
   buttonText: {
     color: colors.text.white,
     fontSize: 16,
     fontWeight: 'bold',
   },
-  backToLoginContainer: {
-    marginTop: 20,
+  backButton: {
     alignItems: 'center',
+    marginTop: 10,
   },
-  backToLoginText: {
-    color: colors.primary,
+  backButtonText: {
+    color: colors.text.primary,
     fontSize: 16,
   },
 });

@@ -77,6 +77,13 @@ const ForgotPasswordScreen = ({ navigation }: any) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('../../../assets/images/logo.png')}
+          style={styles.logo}
+        />
+      </View>
+      
       <Text style={styles.title}>Forgot Password</Text>
 
       {step === 1 && (

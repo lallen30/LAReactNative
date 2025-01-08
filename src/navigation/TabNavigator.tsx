@@ -45,7 +45,7 @@ const TabNavigator = () => {
         options={{
           tabBarIcon: ({ focused, color }) => (
             <Icon
-              name={focused ? 'person' : 'person-outline'}
+              name={focused ? 'person-outline' : 'person-outline'}
               size={24}
               color={route.name === 'MyProfile' ? '#007AFF' : '#666'}
             />

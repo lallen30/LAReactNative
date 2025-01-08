@@ -1,0 +1,29 @@
+.listing ion-item {
+  --border-radius: 0;
+  margin-bottom: 00;
+}
+
+ion-label,
+.list_header-left {
+  text-transform: uppercase;
+}
+
+ion-thumbnail {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ion-label {
+  margin: 0;
+}
+
+h2 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 5px;
+}
+
+p.date-readmore {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}

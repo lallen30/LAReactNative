@@ -15,11 +15,11 @@ export const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 40,
+    marginBottom: 0,
   },
   logo: {
     width: width * 0.6,
-    height: 100,
+    height: 200,
     resizeMode: 'contain',
   },
   title: {
