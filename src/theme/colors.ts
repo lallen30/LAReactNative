@@ -1,7 +1,7 @@
 export const colors = {
   primary: '#007AFF',
   secondary: '#0063CF',
-  tertiary: '#F0A225',
+  tertiary: '#FA63FF',
   success: '#2FD36F',
   warning: '#FDC40C',
   danger: '#EC445A',

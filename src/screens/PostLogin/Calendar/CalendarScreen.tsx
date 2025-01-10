@@ -72,18 +72,19 @@ const CalendarScreen = ({ navigation }: any) => {
           const eventDate = event.event_date;
           marked[eventDate] = {
             marked: true,
-            dotColor: colors.secondary
+            dotColor: colors.tertiary
           };
         });
         
         // Also mark the selected date
-        if (marked[selectedDate]) {
-          marked[selectedDate] = {
-            ...marked[selectedDate],
+        const selectedDateKey = new Date(selectedDate).toISOString().split('T')[0];
+        if (selectedDateKey in marked) {
+          marked[selectedDateKey] = {
+            ...marked[selectedDateKey],
             selected: true
           };
         } else {
-          marked[selectedDate] = {
+          marked[selectedDateKey] = {
             selected: true
           };
         }
@@ -139,14 +140,15 @@ const CalendarScreen = ({ navigation }: any) => {
     const newMarkedDates = { ...markedDates };
     
     // Remove selected state from previous date
-    if (markedDates[selectedDate]) {
-      newMarkedDates[selectedDate] = {
-        ...markedDates[selectedDate],
+    const previousSelectedDateKey = new Date(selectedDate).toISOString().split('T')[0];
+    if (markedDates[previousSelectedDateKey]) {
+      newMarkedDates[previousSelectedDateKey] = {
+        ...markedDates[previousSelectedDateKey],
         selected: false
       };
       // If the date only had selected: true, remove it entirely
-      if (!newMarkedDates[selectedDate].marked) {
-        delete newMarkedDates[selectedDate];
+      if (!newMarkedDates[previousSelectedDateKey].marked) {
+        delete newMarkedDates[previousSelectedDateKey];
       }
     }
     
@@ -216,7 +218,7 @@ const CalendarScreen = ({ navigation }: any) => {
           selectedDayBackgroundColor: colors.secondary,
           selectedDayTextColor: colors.white,
           todayTextColor: colors.primary,
-          dotColor: colors.secondary,
+          dotColor: colors.danger,
           arrowColor: colors.dark,
           monthTextColor: colors.dark,
           textDayFontWeight: '300',
