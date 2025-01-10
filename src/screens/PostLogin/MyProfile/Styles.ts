@@ -1,4 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
@@ -7,7 +8,7 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
 container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   centerContent: {
     justifyContent: 'center',
@@ -16,7 +17,7 @@ container: {
   header: {
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: colors.light,
   },
   avatarContainer: {
     width: 120,
@@ -24,7 +25,7 @@ container: {
     borderRadius: 60,
     overflow: 'hidden',
     marginBottom: 15,
-    backgroundColor: '#e1e1e1',
+    backgroundColor: colors.primary,
   },
   profileImage: {
     width: '100%',
@@ -38,15 +39,15 @@ container: {
   },
   location: {
     fontSize: 16,
-    color: '#666',
+    color: colors.dark,
     marginTop: 4,
   },
   infoSection: {
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     borderRadius: 8,
     margin: 16,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -60,7 +61,7 @@ container: {
     alignItems: 'center',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#f0f0f0',
+    borderBottomColor: colors.light,
   },
   icon: {
     marginRight: 15,
@@ -79,24 +80,24 @@ container: {
     paddingTop: 0,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     borderRadius: 8,
     padding: 15,
     alignItems: 'center',
     marginBottom: 10,
   },
   secondaryButton: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.secondary,
     borderWidth: 1,
-    borderColor: '#007AFF',
+    borderColor: colors.light,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 16,
     fontWeight: '600',
   },
   secondaryButtonText: {
-    color: '#007AFF',
+    color: colors.white,
   },
   errorText: {
     fontSize: 16,

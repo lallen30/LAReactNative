@@ -4,24 +4,24 @@ import { colors } from '../../../theme/colors';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.light,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
   },
   header: {
     padding: 16,
-    backgroundColor: colors.background.header,
+    backgroundColor: colors.headerBg,
     borderBottomWidth: 1,
-    borderBottomColor: colors.border.primary,
+    borderBottomColor: colors.primary,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.text.header,
+    color: colors.headerFont,
   },
   postsContainer: {
     padding: 16,
@@ -32,15 +32,15 @@ export const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 12,
   },
   postCard: {
-    backgroundColor: colors.White,
+    backgroundColor: colors.white,
     borderRadius: 8,
     padding: 16,
     marginBottom: 12,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -52,12 +52,12 @@ export const styles = StyleSheet.create({
   postTitle: {
     fontSize: 18,
     fontWeight: '500',
-    color: colors.text.primary,
+    color: colors.dark,
     marginBottom: 8,
   },
   postDate: {
     fontSize: 14,
-    color: colors.text.secondary,
+    color: colors.secondary,
   },
   emptyContainer: {
     flex: 1,
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 16,
-    color: colors.text.secondary,
+    color: colors.secondary,
     textAlign: 'center',
   },
 });

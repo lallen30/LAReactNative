@@ -112,23 +112,23 @@ const DrawerNavigator = ({ navigation }: any) => {
         screenOptions={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: colors.background.header,
+            backgroundColor: colors.footerBg,
             elevation: 0,
             shadowOpacity: 0,
             borderBottomWidth: 1,
             borderBottomColor: colors.light,
           },
-          headerTintColor: colors.text.header,
+          headerTintColor: colors.headerFont,
           headerTitleStyle: {
             fontWeight: '600',
-            color: colors.text.header,
+            color: colors.headerFont,
           },
           drawerStyle: {
-            backgroundColor: colors.White,
+            backgroundColor: colors.white,
             width: 280,
           },
-          drawerActiveBackgroundColor: colors.background.header,
-          drawerActiveTintColor: colors.White,
+          drawerActiveBackgroundColor: colors.footerBg,
+          drawerActiveTintColor: colors.footerFont,
           drawerInactiveTintColor: colors.dark,
         }}
       >
@@ -185,7 +185,7 @@ const DrawerNavigator = ({ navigation }: any) => {
               <Icon
                 name="chevron-back"
                 size={28}
-                color={colors.text.header}
+                color={colors.headerFont}
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Calendar')}
               />
@@ -196,8 +196,8 @@ const DrawerNavigator = ({ navigation }: any) => {
           name="About Us"
           component={AboutUsWrapper}
           options={{
-            drawerIcon: ({ focused, size }) => (
-              <Icon name={focused ? 'information-circle' : 'information-circle-outline'} size={size} color={focused ? '#007AFF' : '#666'} />
+            drawerIcon: ({ focused, size, color }) => (
+              <Icon name={focused ? 'information-circle' : 'information-circle-outline'} size={size} color={focused ? color : '#666'} />
             ),
           }}
         />
@@ -220,20 +220,20 @@ const DrawerNavigator = ({ navigation }: any) => {
               <Icon
                 name="chevron-back"
                 size={28}
-                color={colors.text.header}
+                color={colors.headerFont}
                 style={{ marginLeft: 15 }}
                 onPress={() => navigation.navigate('Posts')}
               />
             ),
             headerStyle: {
-              backgroundColor: colors.background.header,
+              backgroundColor: colors.headerBg,
               elevation: 0,
               shadowOpacity: 0,
               borderBottomWidth: 1,
               borderBottomColor: colors.light,
             },
             headerTitleStyle: {
-              color: colors.text.header,
+              color: colors.headerFont,
               fontSize: 18,
             },
           }}

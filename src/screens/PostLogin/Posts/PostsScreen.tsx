@@ -88,7 +88,7 @@ const PostsScreen = ({ navigation }: any) => {
         <RefreshControl
           refreshing={refreshing}
           onRefresh={onRefresh}
-          colors={[colors.primary]}
+          colors={[colors.dark]}
         />
       }
     >

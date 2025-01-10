@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '600',
     marginLeft: 8,
-    color: colors.text.primary,
+    color: colors.primary,
   },
   scrollView: {
     flex: 1,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
-    color: colors.text.primary,
+    color: colors.primary,
   },
   lastUpdated: {
     fontSize: 14,
@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginTop: 20,
     marginBottom: 10,
-    color: colors.text.primary,
+    color: colors.primary,
   },
   text: {
     fontSize: 16,
     lineHeight: 24,
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 15,
   },
 });

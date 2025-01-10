@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
     padding: 20,
   },
   scrollContainer: {
@@ -25,23 +25,23 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 30,
     textAlign: 'center',
   },
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: colors.border.primary,
+    borderColor: colors.dark,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    backgroundColor: colors.background.primary,
-    color: colors.text.primary,
+    backgroundColor: colors.light,
+    color: colors.primary,
   },
   errorText: {
-    color: colors.text.error,
+    color: colors.danger,
     fontSize: 14,
     marginTop: -10,
     marginBottom: 10,
@@ -57,7 +57,7 @@ export const styles = StyleSheet.create({
     height: 20,
     borderRadius: 4,
     borderWidth: 2,
-    borderColor: colors.primary,
+    borderColor: colors.dark,
     marginRight: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -68,7 +68,7 @@ export const styles = StyleSheet.create({
   checkboxLabel: {
     flex: 1,
     marginLeft: 8,
-    color: colors.text.primary,
+    color: colors.primary,
   },
   button: {
     backgroundColor: colors.primary,
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
   buttonText: {
-    color: colors.text.white,
+    color: colors.white,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -89,7 +89,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   linkText: {
-    color: colors.text.primary,
+    color: colors.primary,
     fontSize: 16,
   },
   link: {

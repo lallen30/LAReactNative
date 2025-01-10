@@ -6,6 +6,7 @@ import { styles } from './Styles';
 import axiosRequest from '../../../helper/axiosRequest';
 import { API } from '../../../helper/config';
 import axios from 'axios';
+import { colors } from '../../../theme/colors';
 
 interface CalendarEvent {
   event_id: string;
@@ -71,7 +72,7 @@ const CalendarScreen = ({ navigation }: any) => {
           const eventDate = event.event_date;
           marked[eventDate] = {
             marked: true,
-            dotColor: '#007AFF'
+            dotColor: colors.secondary
           };
         });
         
@@ -212,17 +213,17 @@ const CalendarScreen = ({ navigation }: any) => {
         onDayPress={onDayPress}
         markedDates={markedDates}
         theme={{
-          selectedDayBackgroundColor: '#007AFF',
-          selectedDayTextColor: '#ffffff',
-          todayTextColor: '#007AFF',
-          dotColor: '#007AFF',
-          arrowColor: '#666',
-          monthTextColor: '#2c3e50',
+          selectedDayBackgroundColor: colors.secondary,
+          selectedDayTextColor: colors.white,
+          todayTextColor: colors.primary,
+          dotColor: colors.secondary,
+          arrowColor: colors.dark,
+          monthTextColor: colors.dark,
           textDayFontWeight: '300',
           textMonthFontWeight: 'bold',
           textDayHeaderFontWeight: '500',
-          textDayColor: '#2c3e50',
-          textDayHeaderColor: '#2c3e50'
+          textDayColor: colors.tertiary,
+          textDayHeaderColor: colors.secondary
         }}
       />
       <View style={[styles.sectionHeader, { padding: 20, marginVertical: 15 }]}>

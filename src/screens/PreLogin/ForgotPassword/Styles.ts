@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, ViewStyle, TextStyle, ImageStyle } from 'react-native';
 import { colors } from '../../../theme/colors';
 
 const { width } = Dimensions.get('window');
@@ -7,12 +7,12 @@ type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
 };
 
-export const styles = StyleSheet.create<Styles>({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
     padding: 20,
-    justifyContent: 'center',
+    justifyContent: 'center' as const,
   },
   logoContainer: {
     alignItems: 'center',
@@ -26,22 +26,22 @@ export const styles = StyleSheet.create<Styles>({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 10,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
-    color: colors.text.secondary,
+    color: colors.secondary,
     marginBottom: 30,
     textAlign: 'center',
   },
   input: {
-    backgroundColor: colors.background.secondary,
+    backgroundColor: colors.light,
     borderRadius: 8,
     padding: 15,
     marginBottom: 15,
-    color: colors.text.primary,
+    color: colors.black,
   },
   button: {
     backgroundColor: colors.primary,
@@ -51,7 +51,7 @@ export const styles = StyleSheet.create<Styles>({
     marginBottom: 15,
   },
   buttonText: {
-    color: colors.text.white,
+    color: colors.white,
     fontSize: 16,
     fontWeight: 'bold',
   },
@@ -60,7 +60,7 @@ export const styles = StyleSheet.create<Styles>({
     marginTop: 10,
   },
   backButtonText: {
-    color: colors.text.primary,
+    color: colors.primary,
     fontSize: 16,
   },
 });

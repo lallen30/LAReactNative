@@ -1,4 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
@@ -12,14 +13,14 @@ container: {
   header: {
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: colors.light,
   },
   avatarContainer: {
     width: 120,
     height: 120,
     borderRadius: 60,
     overflow: 'hidden',
-    backgroundColor: '#e1e1e1',
+    backgroundColor: colors.light,
     position: 'relative',
   },
   profileImage: {
@@ -30,7 +31,7 @@ container: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     width: 36,
     height: 36,
     borderRadius: 18,
@@ -52,10 +53,10 @@ container: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: colors.dark,
     borderRadius: 8,
     paddingHorizontal: 12,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   inputIcon: {
     marginRight: 10,
@@ -64,10 +65,10 @@ container: {
     flex: 1,
     height: 48,
     fontSize: 16,
-    color: '#000',
+    color: colors.black,
   },
   errorText: {
-    color: '#ff3b30',
+    color: colors.danger,
     fontSize: 12,
     marginTop: 4,
   },
@@ -76,7 +77,7 @@ container: {
     paddingBottom: 40,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     padding: 15,
     borderRadius: 8,
     alignItems: 'center',
@@ -85,7 +86,7 @@ container: {
     opacity: 0.7,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.white,
     fontSize: 16,
     fontWeight: '600',
   },

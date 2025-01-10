@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
     padding: 20,
     justifyContent: 'center',
   },
@@ -21,20 +21,20 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 30,
     textAlign: 'center',
   },
   input: {
     height: 50,
     borderWidth: 1,
-    borderColor: colors.border.primary,
+    borderColor: colors.dark,
     borderRadius: 8,
     paddingHorizontal: 15,
     marginBottom: 15,
     fontSize: 16,
-    color: colors.text.primary,
-    backgroundColor: colors.background.primary,
+    color: colors.dark,
+    backgroundColor: colors.light,
   },
   passwordContainer: {
     position: 'relative',
@@ -65,7 +65,7 @@ export const styles = StyleSheet.create({
   },
   checkboxLabel: {
     fontSize: 16,
-    color: colors.text.primary,
+    color: colors.dark,
   },
   button: {
     backgroundColor: colors.primary,
@@ -75,7 +75,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    color: colors.text.white,
+    color: colors.white,
     fontSize: 18,
     fontWeight: '600',
   },
@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   link: {
-    color: colors.primary,
+    color: colors.secondary,
     fontSize: 16,
   },
 });

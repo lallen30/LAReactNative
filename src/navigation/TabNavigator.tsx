@@ -25,12 +25,12 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: colors.background.footer,
+          backgroundColor: colors.footerBg,
           borderTopWidth: 1,
           borderTopColor: colors.light,
         },
         tabBarActiveTintColor: colors.secondary,
-        tabBarInactiveTintColor: colors.text.footer,
+        tabBarInactiveTintColor: colors.footerBg,
       }}
     >
       <Tab.Screen
@@ -47,7 +47,7 @@ const TabNavigator = () => {
             <Icon
               name={focused ? 'person-outline' : 'person-outline'}
               size={24}
-              color={route.name === 'MyProfile' ? '#007AFF' : '#666'}
+              color={route.name === 'MyProfile' ? colors.secondary : colors.footerFont}
             />
           ),
         }}
@@ -66,7 +66,7 @@ const TabNavigator = () => {
             <Icon
               name={focused ? 'mail' : 'mail-outline'}
               size={24}
-              color={route.name === 'Contact' ? '#007AFF' : '#666'}
+              color={route.name === 'Contact' ? colors.secondary : colors.footerFont}
             />
           ),
         }}
@@ -85,7 +85,7 @@ const TabNavigator = () => {
             <Icon
               name={focused ? 'home' : 'home-outline'}
               size={24}
-              color={route.name === 'Home' ? '#007AFF' : '#666'}
+              color={route.name === 'Home' ? colors.secondary : colors.footerFont}
             />
           ),
         }}
@@ -104,7 +104,7 @@ const TabNavigator = () => {
             <Icon
               name={focused ? 'calendar' : 'calendar-outline'}
               size={24}
-              color={route.name === 'Calendar' ? '#007AFF' : '#666'}
+              color={route.name === 'Calendar' ? colors.secondary : colors.footerFont}
             />
           ),
         }}
@@ -123,7 +123,7 @@ const TabNavigator = () => {
             <Icon
               name={focused ? 'menu' : 'menu-outline'}
               size={24}
-              color={color}
+              color={colors.footerFont}
             />
           ),
         }}

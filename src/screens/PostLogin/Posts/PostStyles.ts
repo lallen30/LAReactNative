@@ -6,30 +6,30 @@ const { width } = Dimensions.get('window');
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
-    backgroundColor: colors.background.primary,
+    backgroundColor: colors.white,
   },
   errorText: {
     fontSize: 16,
-    color: colors.text.error,
+    color: colors.danger,
     textAlign: 'center',
   },
   featuredImage: {
     width: width,
     height: width * 0.6,
-    backgroundColor: colors.background.secondary,
+    backgroundColor: colors.secondary,
   },
   content: {
     padding: 16,
@@ -37,12 +37,12 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: colors.text.primary,
+    color: colors.primary,
     marginBottom: 8,
   },
   date: {
     fontSize: 14,
-    color: colors.text.secondary,
+    color: colors.dark,
     marginBottom: 16,
   },
 });

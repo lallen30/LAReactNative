@@ -1,32 +1,33 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   calendar: {
     marginBottom: 0,
   },
   contentContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   sectionHeader: {
-    backgroundColor: '#f8f9fa',
+    backgroundColor: colors.headerBg,
     borderBottomWidth: 1,
     borderTopWidth: 1,
-    borderColor: '#e9ecef',
+    borderColor: colors.light,
   },
   sectionTitle: {
-    color: '#2c3e50',
+    color: colors.primary,
     textAlign: 'center',
   },
   titleContainer: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     margin: 15,
     borderRadius: 8,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -40,11 +41,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   eventCard: {
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
     padding: 15,
     marginBottom: 12,
     borderRadius: 10,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 2,
@@ -53,28 +54,28 @@ export const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
     borderWidth: 1,
-    borderColor: '#f0f0f0',
+    borderColor: colors.light,
   },
   eventTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#2c3e50',
+    color: colors.secondary,
     marginBottom: 8,
   },
   eventTime: {
     fontSize: 14,
-    color: '#007AFF',
+    color: colors.primary,
     marginBottom: 8,
     fontWeight: '500',
   },
   eventLocation: {
     fontSize: 14,
-    color: '#6c757d',
+    color: colors.dark,
     lineHeight: 20,
   },
   noEventsText: {
     textAlign: 'center',
-    color: '#6c757d',
+    color: colors.dark,
     fontSize: 15,
     paddingVertical: 20,
     fontStyle: 'italic',

@@ -1,4 +1,5 @@
 import { StyleSheet, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import { colors } from '../../../theme/colors';
 
 type Styles = {
     [key: string]: ViewStyle | TextStyle | ImageStyle;
@@ -7,7 +8,7 @@ type Styles = {
 export const styles = StyleSheet.create<Styles>({
 container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   header: {
     padding: 20,
@@ -20,7 +21,7 @@ container: {
   },
   subtitle: {
     fontSize: 16,
-    color: '#666',
+    color: colors.dark,
     marginBottom: 20,
   },
   formContainer: {
@@ -32,16 +33,16 @@ container: {
   label: {
     fontSize: 16,
     marginBottom: 8,
-    color: '#333',
+    color: colors.dark,
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: colors.dark,
     borderRadius: 8,
     paddingHorizontal: 12,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: colors.light,
   },
   inputIcon: {
     marginRight: 10,
@@ -50,15 +51,15 @@ container: {
     flex: 1,
     height: 48,
     fontSize: 16,
-    color: '#333',
+    color: colors.dark,
   },
   errorText: {
-    color: '#ff3b30',
+    color: colors.danger,
     fontSize: 14,
     marginTop: 5,
   },
   button: {
-    backgroundColor: '#007AFF',
+    backgroundColor: colors.primary,
     borderRadius: 8,
     height: 48,
     justifyContent: 'center',
