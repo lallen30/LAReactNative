@@ -1,6 +1,6 @@
 export const colors = {
-  primary: '#3B00FF',
-  secondary: '#3B00FF',
+  primary: '#007AFF',
+  secondary: '#0063CF',
   tertiary: '#F0A225',
   success: '#2FD36F',
   warning: '#FDC40C',
@@ -10,7 +10,7 @@ export const colors = {
   medium: '#96A1A5',
   dark: '#222428',
   black: '#000000',
-  headerBg: '#3B00FF',
+  headerBg: '#007AFF',
   headerFont: '#FFFFFF',
   footerBg: '#F9F9FC',
   footerFont: '#96A1A5',
