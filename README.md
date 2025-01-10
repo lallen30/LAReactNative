@@ -1,15 +1,57 @@
+# LAReactNative
+
+A React Native mobile application with features including calendar events, posts, and more.
+
+## Prerequisites
+
+- Node.js (v23 recommended)
+- React Native CLI
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+- Watchman
+
+## Environment Setup
+
+Before running the project, make sure to set the file descriptor limit:
+
+```bash
 ulimit -n 1048575
+```
 
-$ watchman watch-del-all
+## Installation
 
-npm start -- --reset-cache
+1. Clone the repository
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-node version 23 used
+## Key Features
 
+- Calendar with event management
+- Post creation and viewing
+- Navigation drawer
+- Async storage for data persistence
+- API integration with axios
 
+## Project Structure
 
+- `/src`: Main source code
+  - `/screens`: Application screens
+  - `/navigation`: Navigation configuration
+  - `/theme`: Theme and styling
+  - `/api`: API integration
 
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+## Dependencies
+
+Key packages used in this project:
+- react-native-calendars
+- @react-navigation/drawer
+- @react-native-async-storage/async-storage
+- axios
+- react-native-vector-icons
 
 # Getting Started
 
@@ -77,7 +119,15 @@ You've successfully run and modified your React Native App. :partying_face:
 
 # Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+If you encounter the following issues:
+
+1. Metro bundler cache issues:
+```bash
+watchman watch-del-all
+npm start -- --reset-cache
+```
+
+2. For other common issues, refer to the [React Native Troubleshooting](https://reactnative.dev/docs/troubleshooting) guide.
 
 # Learn More
 
