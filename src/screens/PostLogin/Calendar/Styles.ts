@@ -14,17 +14,17 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   sectionHeader: {
-    backgroundColor: colors.headerBg,
+    backgroundColor: colors.white,
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: colors.light,
   },
   sectionTitle: {
-    color: colors.primary,
+    color: colors.black,
     textAlign: 'center',
   },
   titleContainer: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.light,
     margin: 15,
     borderRadius: 8,
     shadowColor: colors.black,
@@ -59,12 +59,12 @@ export const styles = StyleSheet.create({
   eventTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: colors.secondary,
+    color: colors.black,
     marginBottom: 8,
   },
   eventTime: {
     fontSize: 14,
-    color: colors.primary,
+    color: colors.secondary,
     marginBottom: 8,
     fontWeight: '500',
   },

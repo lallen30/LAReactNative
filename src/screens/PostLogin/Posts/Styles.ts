@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
   postTitle: {
     fontSize: 18,
     fontWeight: '500',
-    color: colors.dark,
+    color: colors.black,
     marginBottom: 8,
   },
   postDate: {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -39,6 +39,22 @@ const ChangePasswordScreen = ({ navigation }: any) => {
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    // Set up the navigation header
+    navigation.setOptions({
+      headerShown: true,
+      headerTitle: 'Change Password',
+      headerLeft: () => (
+        <TouchableOpacity 
+          style={{ marginLeft: 10 }}
+          onPress={() => navigation.navigate('MyProfile')}
+        >
+          <Icon style={styles.backButton} name="chevron-back" size={24} />
+        </TouchableOpacity>
+      ),
+    });
+  }, [navigation]);
 
   const togglePasswordVisibility = (field: keyof PasswordVisibility) => {
     setShowPassword(prev => ({

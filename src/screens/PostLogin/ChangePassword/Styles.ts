@@ -19,6 +19,9 @@ container: {
     fontWeight: 'bold',
     marginBottom: 10,
   },
+  backButton: {
+    color: colors.white,
+  },
   subtitle: {
     fontSize: 16,
     color: colors.dark,

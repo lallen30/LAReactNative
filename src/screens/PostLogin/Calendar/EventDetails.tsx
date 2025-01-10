@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, useWindowDimensions } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import RenderHtml, { defaultSystemFonts } from 'react-native-render-html';
+import { styles } from './EventDetailsStyles';
+import { colors } from '../../../theme/colors';
 
 const EventDetails = () => {
   const navigation = useNavigation();
@@ -41,12 +43,12 @@ const EventDetails = () => {
 
   const tagsStyles = {
     body: {
-      color: '#2c3e50',
+      color: colors.black,
       fontSize: 16,
       lineHeight: 24,
     },
     a: {
-      color: '#007AFF',
+      color: colors.primary,
       textDecorationLine: 'underline',
     }
   };
@@ -101,60 +103,5 @@ const EventDetails = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  content: {
-    flex: 1,
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#2c3e50',
-    marginBottom: 10,
-  },
-  date: {
-    fontSize: 18,
-    color: '#007AFF',
-    marginBottom: 5,
-  },
-  time: {
-    fontSize: 18,
-    color: '#007AFF',
-    marginBottom: 20,
-  },
-  section: {
-    marginBottom: 25,
-    borderTopWidth: 1,
-    borderTopColor: '#e9ecef',
-    paddingTop: 20,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#2c3e50',
-    marginBottom: 10,
-  },
-  location: {
-    fontSize: 16,
-    color: '#666',
-    lineHeight: 24,
-  },
-  description: {
-    fontSize: 16,
-    color: '#666',
-    lineHeight: 24,
-  },
-  price: {
-    fontSize: 18,
-    color: '#007AFF',
-    fontWeight: '500',
-    marginTop: 5,
-  },
-});
 
 export default EventDetails;

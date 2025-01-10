@@ -41,8 +41,22 @@ const EditProfileScreen = ({ navigation }: any) => {
   const [currentAvatar, setCurrentAvatar] = useState<string>('');
 
   useEffect(() => {
+    // Set up the navigation header
+    navigation.setOptions({
+      headerShown: true,
+      headerTitle: 'Edit Profile',
+      headerLeft: () => (
+        <TouchableOpacity 
+          style={{ marginLeft: 10 }}
+          onPress={() => navigation.navigate('MyProfile')}
+        >
+          <Icon style={styles.backButton} name="chevron-back" size={24} />
+        </TouchableOpacity>
+      ),
+    });
+    
     loadUserData();
-  }, []);
+  }, [navigation]);
 
   const loadUserData = async () => {
     try {

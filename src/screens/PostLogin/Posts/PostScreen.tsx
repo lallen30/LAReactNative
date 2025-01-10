@@ -90,7 +90,7 @@ const PostScreen = () => {
           source={{ html: post.post_content }}
           tagsStyles={{
             body: {
-              color: colors.dark,
+              color: colors.black,
               fontSize: 16,
               lineHeight: 24,
             },

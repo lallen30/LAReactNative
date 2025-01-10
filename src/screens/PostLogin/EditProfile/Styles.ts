@@ -90,4 +90,7 @@ container: {
     fontSize: 16,
     fontWeight: '600',
   },
+  backButton: {
+    color: colors.white,
+  }
 });

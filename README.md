@@ -1,3 +1,14 @@
+ulimit -n 1048575
+
+$ watchman watch-del-all
+
+npm start -- --reset-cache
+
+node version 23 used
+
+
+
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
