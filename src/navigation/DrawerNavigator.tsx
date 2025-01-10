@@ -112,7 +112,7 @@ const DrawerNavigator = ({ navigation }: any) => {
         screenOptions={{
           headerShown: true,
           headerStyle: {
-            backgroundColor: colors.footerBg,
+            backgroundColor: colors.headerBg,
             elevation: 0,
             shadowOpacity: 0,
             borderBottomWidth: 1,
